@@ -1,0 +1,12 @@
+{
+  "name": "Multi-tenant geme Hosp EHR",
+  "description": "A comprehensive, secure, and paperless digital health platform designed for end-to-end patient care, from admission to billing and supply chain management.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

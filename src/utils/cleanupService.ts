@@ -1,0 +1,153 @@
+import { collection, query, where, getDocs, deleteDoc, doc } from 'firebase/firestore';
+import { db } from '../lib/firebase';
+import { isFakeOrFalseRow } from './dataIntegrity';
+
+export const COLLECTIONS_TO_PURGE = [
+  'patients',
+  'users',
+  'patient_mrn_registrations',
+  'admissions',
+  'security_logs',
+  'qi_audits',
+  'financial_ledger',
+  'inventory_stock_entries',
+  'dispensation_audit',
+  'hr_attendance_registry',
+  'hr_training_attendance',
+  'hr_leave_requests',
+  'hr_sick_leave',
+  'hr_motivation_logs',
+  'hr_action_plans',
+  'hr_performance_reviews',
+  'hr_onboarding',
+  'hr_clearances',
+  'hr_leaves',
+  'hr_motivations',
+  'hr_sick_leaves',
+  'hr_activity_logs',
+  'hr_audit_trail',
+  'hr_staff_documents',
+  'hr_staff_registry',
+  'clearance_records',
+  'shifts',
+  'handovers',
+  'compliance_logs',
+  'hospital_modules_submissions',
+  'dynamic_modules_submissions',
+  'planning_strategic',
+  'planning_operational',
+  'dispensary_prescribing',
+  'dispensary_monitoring',
+  'drug_stock_out',
+  'purchased_drug_stock_out',
+  'auditory_drug_stock_out',
+  'bin_card',
+  'inventory_add_items',
+  'register_logbooks',
+  'hospital_notifications',
+  'action_plans',
+  'activity_logs',
+  'archived_hospital_user_records',
+  'audit_log',
+  'clinical_encounters',
+  'custom_fields',
+  'database_backups',
+  'departments',
+  'dispensary_actions',
+  'drug_recalls',
+  'environmental_records',
+  'finance_action_plans',
+  'finance_records',
+  'financial_invoices',
+  'financial_services',
+  'fin_patient_ledger',
+  'hospital_assets',
+  'hospital_audits',
+  'hr_capacity_building',
+  'hr_departments',
+  'hr_folders',
+  'hr_handovers',
+  'hr_master_shifts',
+  'hr_notifications',
+  'hr_performance_evaluations',
+  'hr_recruitment',
+  'insurance_claims',
+  'lab_requests',
+  'lab_results',
+  'manager_registration_activities',
+  'medical_services',
+  'medication_administrations',
+  'monthly_reports_v2',
+  'patient_journey_events',
+  'patient_lab_metrics',
+  'patient_laboratory_payments',
+  'patient_workflows',
+  'payments',
+  'pdf_standard_register',
+  'pending_user_requests',
+  'pharmacy_alerts',
+  'pharmacy_shift_handoffs',
+  'planning_records',
+  'prescription_audit_logs',
+  'prescriptions',
+  'radiology_orders',
+  'recently_deleted',
+  'referrals',
+  'register_logbook_users',
+  'security_daily_reports',
+  'security_duty_rosters',
+  'security_handovers',
+  'security_incidents',
+  'security_patrols',
+  'staff',
+  'staff_shifts',
+  'strategic_goals',
+  'triage',
+  'universal_clinical_folder',
+  'user_activity_logs',
+  'form_1_1_1_2',
+  'form_1_1_1_a',
+  'form_1_1_1_b',
+  'form_1_1_1_h',
+  'form_1_1_1_i',
+  'form_1_1_1_i_1',
+  'form_1_1_1_k',
+  'form_1_1_1_m',
+  'form_1_1_1_v_6',
+  'form_1_1_1_v_7',
+  'form_1_1_1_w',
+  'form_1_1_1_z_9',
+  'hospitals',
+  'licenses',
+  'module4_passcodes',
+  'module_passcodes',
+  'owner_registered_admins',
+  'role_permissions',
+  'pdf_standard_registers',
+  'audit_logs',
+  'referrals',
+  'hospital_modules_submissions',
+  'environmental_records'
+];
+
+export async function runGlobalCleanup(hospital_id: string, onProgress?: (msg: string) => void) {
+  let totalDeleted = 0;
+  
+  for (const colName of COLLECTIONS_TO_PURGE) {
+    if (onProgress) onProgress(`Cleaning ${colName}...`);
+    try {
+      const q = query(collection(db, colName), where('hospital_id', '==', hospital_id));
+      const snapshot = await getDocs(q);
+      const fakeDocs = snapshot.docs.filter(d => isFakeOrFalseRow({ id: d.id, ...d.data() }));
+      
+      if (fakeDocs.length > 0) {
+        await Promise.all(fakeDocs.map(d => deleteDoc(doc(db, colName, d.id))));
+        totalDeleted += fakeDocs.length;
+      }
+    } catch (err) {
+      console.error(`Cleanup failed for ${colName}:`, err);
+    }
+  }
+  
+  return totalDeleted;
+}

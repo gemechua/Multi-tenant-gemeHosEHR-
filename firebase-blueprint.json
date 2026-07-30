@@ -1,0 +1,3615 @@
+{
+  "entities": {
+    "Department": {
+      "title": "Department",
+      "description": "Hospital department configuration",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "code": { "type": "string" },
+        "is_active": { "type": "boolean" }
+      },
+      "required": ["id", "name", "code"]
+    },
+    "PreTriageRecord": {
+      "title": "PreTriageRecord",
+      "description": "Pre-triage intake screening record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "priority_level": { "type": "string" },
+        "chief_complaint": { "type": "string" },
+        "screening_notes": { "type": "string" },
+        "vital_bp": { "type": "string" },
+        "vital_pulse": { "type": "number" },
+        "vital_temp": { "type": "number" },
+        "summary": { "type": "string" },
+        "created_at": { "type": "string" },
+        "updated_at": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "priority_level", "chief_complaint", "summary"]
+    },
+    "PatientPayment": {
+      "title": "PatientPayment",
+      "description": "Patient registration payment request record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "patient_name": { "type": "string" },
+        "amount": { "type": "number" },
+        "payment_reason": { "type": "string" },
+        "payment_method": { "type": "string" },
+        "other_payment_details": { "type": "string" },
+        "summary": { "type": "string" },
+        "payment_date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "patient_name", "amount", "payment_reason", "payment_method", "summary", "payment_date"]
+    },
+    "CashierPaymentVerification": {
+      "title": "CashierPaymentVerification",
+      "description": "Cashier payment verification record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "invoice_number": { "type": "string" },
+        "payment_status": { "type": "string" },
+        "payment_method": { "type": "string" },
+        "other_payment_details": { "type": "string" },
+        "approved_name": { "type": "string" },
+        "summary": { "type": "string" },
+        "payment_date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "invoice_number", "payment_status", "payment_method", "approved_name", "summary", "payment_date"]
+    },
+    "PatientLaboratoryPayment": {
+      "title": "PatientLaboratoryPayment",
+      "description": "Patient laboratory payment request record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "lab_bill_amount": { "type": "number" },
+        "payment_method": { "type": "string" },
+        "other_payment_details": { "type": "string" },
+        "approved_name": { "type": "string" },
+        "payment_date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "lab_bill_amount", "payment_method", "approved_name", "payment_date"]
+    },
+    "PatientPrescriptionPayment": {
+      "title": "PatientPrescriptionPayment",
+      "description": "Patient prescription payment request record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "prescription_bill_amount": { "type": "number" },
+        "payment_method": { "type": "string" },
+        "approved_name": { "type": "string" },
+        "payment_date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "prescription_bill_amount", "payment_method", "approved_name", "payment_date"]
+    },
+    "CashierPrescriptionPaymentVerification": {
+      "title": "CashierPrescriptionPaymentVerification",
+      "description": "Cashier prescription payment verification record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "invoice_no": { "type": "string" },
+        "payment_method": { "type": "string" },
+        "approved_name": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "invoice_no", "payment_method", "approved_name", "date"]
+    },
+    "PatientProcedurePayment": {
+      "title": "PatientProcedurePayment",
+      "description": "Patient procedure payment request record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "procedure_bill_amount": { "type": "number" },
+        "payment_method": { "type": "string" },
+        "approved_name": { "type": "string" },
+        "payment_date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "procedure_bill_amount", "payment_method", "approved_name", "payment_date"]
+    },
+    "CashierProcedurePaymentVerification": {
+      "title": "CashierProcedurePaymentVerification",
+      "description": "Cashier procedure payment verification record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "invoice_no": { "type": "string" },
+        "payment_verified": { "type": "string" },
+        "payment_method": { "type": "string" },
+        "approved_name": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "invoice_no", "payment_verified", "payment_method", "approved_name", "date"]
+    },
+    "PatientRadiologyPayment": {
+      "title": "PatientRadiologyPayment",
+      "description": "Patient radiology payment request record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "radiology_bill_amount": { "type": "number" },
+        "payment_method": { "type": "string" },
+        "approved_name": { "type": "string" },
+        "payment_date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "radiology_bill_amount", "payment_method", "approved_name", "payment_date"]
+    },
+    "PatientLaboratoryInvestigationRequest": {
+      "title": "PatientLaboratoryInvestigationRequest",
+      "description": "Patient laboratory investigation request record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "lab_tests": { "type": "string" },
+        "clinical_indications": { "type": "string" },
+        "requested_by": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "lab_tests", "clinical_indications", "date"]
+    },
+    "PatientRadiologyInvestigationRequest": {
+      "title": "PatientRadiologyInvestigationRequest",
+      "description": "Patient radiology investigation request record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "radiology_modality": { "type": "string" },
+        "clinical_notes": { "type": "string" },
+        "requested_by": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "radiology_modality", "clinical_notes", "requested_by", "date"]
+    },
+    "AntenatalEpisode": {
+      "title": "AntenatalEpisode",
+      "description": "Master record for a pregnancy episode",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "lmp_date": { "type": "string" },
+        "edd": { "type": "string" },
+        "gravida": { "type": "integer" },
+        "para": { "type": "integer" },
+        "is_active": { "type": "boolean" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "lmp_date", "edd"]
+    },
+    "AncVisit": {
+      "title": "AncVisit",
+      "description": "Individual ANC visit record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "anc_visit_no": { "type": "string" },
+        "visit_date": { "type": "string" },
+        "gestational_age_weeks": { "type": "integer" },
+        "bp": { "type": "string" },
+        "weight_kg": { "type": "number" },
+        "fundal_height_cm": { "type": "integer" },
+        "fetal_heart_rate": { "type": "integer" },
+        "iron_folic_acid_provided": { "type": "boolean" },
+        "tetanus_toxoid_dose": { "type": "integer" },
+        "clinical_notes": { "type": "string" },
+        "next_appointment_date": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["id", "episode_id", "anc_visit_no", "visit_date", "gestational_age_weeks"]
+    },
+    "AncVisit3": {
+      "title": "AncVisit3",
+      "description": "Individual ANC visit record (3-visit protocol)",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "anc_visit_no": { "type": "string" },
+        "visit_date": { "type": "string" },
+        "gestational_age_weeks": { "type": "integer" },
+        "bp": { "type": "string" },
+        "weight_kg": { "type": "number" },
+        "fundal_height_cm": { "type": "integer" },
+        "fetal_heart_rate": { "type": "integer" },
+        "iron_folic_acid_provided": { "type": "boolean" },
+        "tetanus_toxoid_dose": { "type": "integer" },
+        "clinical_notes": { "type": "string" },
+        "next_appointment_date": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["id", "episode_id", "anc_visit_no", "visit_date", "gestational_age_weeks"]
+    },
+    "AncVisit4": {
+      "title": "AncVisit4",
+      "description": "Individual ANC visit record (4-visit protocol)",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "anc_visit_no": { "type": "string" },
+        "visit_date": { "type": "string" },
+        "gestational_age_weeks": { "type": "integer" },
+        "bp": { "type": "string" },
+        "weight_kg": { "type": "number" },
+        "fundal_height_cm": { "type": "integer" },
+        "fetal_heart_rate": { "type": "integer" },
+        "iron_folic_acid_provided": { "type": "boolean" },
+        "tetanus_toxoid_dose": { "type": "integer" },
+        "clinical_notes": { "type": "string" },
+        "next_appointment_date": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["id", "episode_id", "anc_visit_no", "visit_date", "gestational_age_weeks"]
+    },
+    "AncVisit5": {
+      "title": "AncVisit5",
+      "description": "Individual ANC visit record (5-visit protocol)",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "anc_visit_no": { "type": "string" },
+        "visit_date": { "type": "string" },
+        "gestational_age_weeks": { "type": "integer" },
+        "bp": { "type": "string" },
+        "weight_kg": { "type": "number" },
+        "fundal_height_cm": { "type": "integer" },
+        "fetal_heart_rate": { "type": "integer" },
+        "iron_folic_acid_provided": { "type": "boolean" },
+        "tetanus_toxoid_dose": { "type": "integer" },
+        "clinical_notes": { "type": "string" },
+        "next_appointment_date": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["id", "episode_id", "anc_visit_no", "visit_date", "gestational_age_weeks"]
+    },
+    "AncVisit6": {
+      "title": "AncVisit6",
+      "description": "Individual ANC visit record (6-visit protocol)",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "anc_visit_no": { "type": "string" },
+        "visit_date": { "type": "string" },
+        "gestational_age_weeks": { "type": "integer" },
+        "bp": { "type": "string" },
+        "weight_kg": { "type": "number" },
+        "fundal_height_cm": { "type": "integer" },
+        "fetal_heart_rate": { "type": "integer" },
+        "iron_folic_acid_provided": { "type": "boolean" },
+        "tetanus_toxoid_dose": { "type": "integer" },
+        "clinical_notes": { "type": "string" },
+        "next_appointment_date": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["id", "episode_id", "anc_visit_no", "visit_date", "gestational_age_weeks"]
+    },
+    "AncVisit7": {
+      "title": "AncVisit7",
+      "description": "Individual ANC visit record (7-visit protocol)",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "anc_visit_no": { "type": "string" },
+        "visit_date": { "type": "string" },
+        "gestational_age_weeks": { "type": "integer" },
+        "bp": { "type": "string" },
+        "weight_kg": { "type": "number" },
+        "fundal_height_cm": { "type": "integer" },
+        "fetal_heart_rate": { "type": "integer" },
+        "iron_folic_acid_provided": { "type": "boolean" },
+        "tetanus_toxoid_dose": { "type": "integer" },
+        "clinical_notes": { "type": "string" },
+        "next_appointment_date": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["id", "episode_id", "anc_visit_no", "visit_date", "gestational_age_weeks"]
+    },
+    "LaborEpisode": {
+      "title": "LaborEpisode",
+      "description": "Master record for a labor and delivery episode",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "admission_date": { "type": "string" },
+        "gravida": { "type": "integer" },
+        "para": { "type": "integer" },
+        "is_active": { "type": "boolean" },
+        "delivery_outcome": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "admission_date"]
+    },
+    "LatentPhaseAssessment": {
+      "title": "LatentPhaseAssessment",
+      "description": "Assessment record during the latent phase of labor",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "assessment_time": { "type": "string" },
+        "contraction_frequency": { "type": "integer" },
+        "contraction_duration": { "type": "integer" },
+        "cervical_dilatation": { "type": "number" },
+        "effacement_percent": { "type": "integer" },
+        "station": { "type": "integer" },
+        "membrane_status": { "type": "string" },
+        "liquor_color": { "type": "string" },
+        "maternal_bp": { "type": "string" },
+        "maternal_pulse": { "type": "integer" },
+        "fetal_heart_rate": { "type": "integer" },
+        "clinical_notes": { "type": "string" },
+        "management_decision": { "type": "string" }
+      },
+      "required": ["id", "episode_id", "assessment_time"]
+    },
+    "ActivePhaseAssessment": {
+      "title": "ActivePhaseAssessment",
+      "description": "Assessment record during the active phase of labor",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "assessment_time": { "type": "string" },
+        "cervical_dilatation": { "type": "number" },
+        "station": { "type": "integer" },
+        "contraction_frequency": { "type": "integer" },
+        "contraction_duration": { "type": "integer" },
+        "maternal_bp": { "type": "string" },
+        "maternal_pulse": { "type": "integer" },
+        "maternal_temp": { "type": "number" },
+        "fetal_heart_rate": { "type": "integer" },
+        "liquor_status": { "type": "string" },
+        "liquor_color": { "type": "string" },
+        "oxytocin_dosage_mu_min": { "type": "integer" },
+        "medication_given": { "type": "string" },
+        "clinical_notes": { "type": "string" },
+        "recorded_by": { "type": "string" }
+      },
+      "required": ["id", "episode_id", "assessment_time", "cervical_dilatation"]
+    },
+    "SecondStageMonitoring": {
+      "title": "SecondStageMonitoring",
+      "description": "Clinical monitoring during the second stage of labor",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "assessment_time": { "type": "string" },
+        "station": { "type": "integer" },
+        "maternal_effort": { "type": "string" },
+        "maternal_bp": { "type": "string" },
+        "maternal_pulse": { "type": "integer" },
+        "fetal_heart_rate": { "type": "integer" },
+        "maneuvers_performed": { "type": "string" },
+        "clinical_notes": { "type": "string" }
+      },
+      "required": ["id", "episode_id", "assessment_time"]
+    },
+    "DeliveryOutcome": {
+      "title": "DeliveryOutcome",
+      "description": "Record of delivery outcome and neonatal status",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "birth_time": { "type": "string" },
+        "mode_of_delivery": { "type": "string" },
+        "baby_gender": { "type": "string" },
+        "baby_weight_grams": { "type": "integer" },
+        "apgar_1min": { "type": "integer" },
+        "apgar_5min": { "type": "integer" },
+        "placenta_status": { "type": "string" },
+        "perineal_tear_degree": { "type": "string" },
+        "blood_loss_ml": { "type": "integer" },
+        "recorded_by": { "type": "string" }
+      },
+      "required": ["id", "episode_id", "birth_time", "mode_of_delivery"]
+    },
+
+    "ThirdStageAssessment": {
+      "title": "ThirdStageAssessment",
+      "description": "Assessment record for the third stage (placental) of labor",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "time_of_placental_delivery": { "type": "string" },
+        "management_method": { "type": "string" },
+        "uterotonic_administered": { "type": "boolean" },
+        "controlled_cord_traction": { "type": "boolean" },
+        "uterine_massage_performed": { "type": "boolean" },
+        "placenta_condition": { "type": "string" },
+        "membranes_condition": { "type": "string" },
+        "estimated_blood_loss_ml": { "type": "integer" },
+        "maternal_bp_post_delivery": { "type": "string" },
+        "complications": { "type": "string" },
+        "recorded_by": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["id", "episode_id", "time_of_placental_delivery", "estimated_blood_loss_ml"]
+    },
+    "PostpartumCheck": {
+      "title": "PostpartumCheck",
+      "description": "Assessment record for postpartum care",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "check_date": { "type": "string" },
+        "check_type": { "type": "string" },
+        "maternal_bp": { "type": "string" },
+        "maternal_pulse": { "type": "integer" },
+        "maternal_temp": { "type": "number" },
+        "fundal_height_cm": { "type": "number" },
+        "lochia_amount": { "type": "string" },
+        "lochia_color": { "type": "string" },
+        "wound_status": { "type": "string" },
+        "breast_status": { "type": "string" },
+        "breastfeeding_status": { "type": "string" },
+        "contraception_provided": { "type": "boolean" },
+        "clinical_notes": { "type": "string" },
+        "recorded_by": { "type": "string" }
+      },
+      "required": ["id", "episode_id", "check_date", "check_type"]
+    },
+    "CesareanSection": {
+      "title": "CesareanSection",
+      "description": "Details of a Cesarean Section surgical procedure",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "registry_id": { "type": "string" },
+        "classification": { "type": "string" },
+        "indication": { "type": "string" },
+        "decision_time": { "type": "string" },
+        "incision_time": { "type": "string" },
+        "anesthesia_type": { "type": "string" },
+        "incision_type": { "type": "string" },
+        "surgeon_name": { "type": "string" },
+        "assistant_name": { "type": "string" },
+        "anesthetist_name": { "type": "string" },
+        "complications": { "type": "string" },
+        "blood_loss_ml": { "type": "integer" },
+        "surgical_notes": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["id", "episode_id", "classification", "indication", "decision_time", "incision_time"]
+    },
+
+    "PostOpRecoveryMonitoring": {
+      "title": "PostOpRecoveryMonitoring",
+      "description": "Assessment record for post-operative recovery monitoring (PACU)",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "assessment_time": { "type": "string" },
+        "motor_block_level": { "type": "string" },
+        "pain_score_vas": { "type": "integer" },
+        "vitals_bp": { "type": "string" },
+        "vitals_pulse": { "type": "integer" },
+        "vitals_resp_rate": { "type": "integer" },
+        "vitals_temp": { "type": "number" },
+        "surgical_dressing_status": { "type": "string" },
+        "fundus_consistency": { "type": "string" },
+        "vaginal_bleeding_amount": { "type": "string" },
+        "urine_output_ml": { "type": "integer" },
+        "recorded_by": { "type": "string" },
+        "clinical_notes": { "type": "string" }
+      },
+      "required": ["id", "episode_id", "assessment_time"]
+    },
+
+    "PostOpTransferStatus": {
+      "title": "PostOpTransferStatus",
+      "description": "Record of patient transfer from PACU to the ward",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "transfer_time": { "type": "string" },
+        "transfer_from": { "type": "string" },
+        "transfer_to": { "type": "string" },
+        "stability_status": { "type": "string" },
+        "iv_fluids_status": { "type": "string" },
+        "catheter_removed": { "type": "boolean" },
+        "handover_notes": { "type": "string" },
+        "received_by": { "type": "string" }
+      },
+      "required": ["id", "episode_id", "transfer_time"]
+    },
+
+    "AEFIReport": {
+      "title": "AEFIReport",
+      "description": "Adverse Events Following Immunization report",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "immunization_id": { "type": "string" },
+        "report_date": { "type": "string" },
+        "reaction_type": { "type": "string" },
+        "severity": { "type": "string" },
+        "action_taken": { "type": "string" },
+        "reported_by": { "type": "string" }
+      },
+      "required": ["id", "immunization_id", "report_date", "reaction_type"]
+    },
+    "PatientImmunization": {
+      "title": "PatientImmunization",
+      "description": "Patient immunization record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "vaccine_id": { "type": "string" },
+        "date_administered": { "type": "string" },
+        "batch_number": { "type": "string" },
+        "expiry_date": { "type": "string" },
+        "site_administered": { "type": "string" },
+        "provider_name": { "type": "string" },
+        "status": { "type": "string" },
+        "next_due_date": { "type": "string" },
+        "clinical_notes": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "vaccine_id", "date_administered"]
+    },
+    "VaccineMaster": {
+      "title": "VaccineMaster",
+      "description": "Master registry for vaccines",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "vaccine_code": { "type": "string" },
+        "vaccine_name": { "type": "string" },
+        "target_disease": { "type": "string" },
+        "recommended_age_weeks": { "type": "integer" },
+        "dose_sequence": { "type": "integer" }
+      },
+      "required": ["id", "vaccine_code", "vaccine_name"]
+    },
+    "NewbornRegistry": {
+      "title": "NewbornRegistry",
+      "description": "Registry record for a newborn baby",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "baby_index": { "type": "integer" },
+        "gender": { "type": "string" },
+        "birth_weight_grams": { "type": "integer" },
+        "gestational_age_at_birth": { "type": "integer" },
+        "status": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["id", "episode_id", "baby_index", "gender"]
+    },
+    "NeonatalRoutineCare": {
+      "title": "NeonatalRoutineCare",
+      "description": "Routine clinical care record for a neonate",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "newborn_id": { "type": "string" },
+        "assessment_time": { "type": "string" },
+        "temp_celsius": { "type": "number" },
+        "heart_rate": { "type": "integer" },
+        "respiratory_rate": { "type": "integer" },
+        "oxygen_saturation": { "type": "integer" },
+        "feeding_method": { "type": "string" },
+        "urine_output_status": { "type": "string" },
+        "stool_status": { "type": "string" },
+        "clinical_notes": { "type": "string" }
+      },
+      "required": ["id", "newborn_id", "assessment_time"]
+    },
+    "NICUDailyLog": {
+      "title": "NICUDailyLog",
+      "description": "Daily clinical log for a newborn in the NICU",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "newborn_id": { "type": "string" },
+        "log_time": { "type": "string" },
+        "spo2_percent": { "type": "integer" },
+        "fio2_percentage": { "type": "integer" },
+        "iv_fluid_rate_ml_hr": { "type": "number" },
+        "respiratory_support": { "type": "string" },
+        "medications_administered": { "type": "string" },
+        "jaundice_level": { "type": "string" },
+        "is_septic_workup_done": { "type": "boolean" },
+        "recorded_by": { "type": "string" }
+      },
+      "required": ["id", "newborn_id", "log_time"]
+    },
+    "KMCSession": {
+      "title": "KMCSession",
+      "description": "Kangaroo Mother Care (KMC) session record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "newborn_id": { "type": "string" },
+        "date_of_session": { "type": "string" },
+        "skin_to_skin_hours_daily": { "type": "integer" },
+        "maternal_participation_score": { "type": "integer" },
+        "current_weight_grams": { "type": "integer" },
+        "feeding_status": { "type": "string" },
+        "is_ready_for_discharge": { "type": "boolean" },
+        "clinical_notes": { "type": "string" }
+      },
+      "required": ["id", "newborn_id", "date_of_session"]
+    },
+    "BirthSummary": {
+      "title": "BirthSummary",
+      "description": "Comprehensive summary of birth outcomes and postpartum status",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "birth_time": { "type": "string" },
+        "mode_of_delivery": { "type": "string" },
+        "baby_weight_grams": { "type": "integer" },
+        "apgar_5min": { "type": "integer" },
+        "total_blood_loss": { "type": "integer" },
+        "surgery_type": { "type": "string" },
+        "surgery_indication": { "type": "string" },
+        "surgeon_name": { "type": "string" },
+        "latest_check_type": { "type": "string" },
+        "latest_bp": { "type": "string" },
+        "latest_temp": { "type": "number" },
+        "latest_fundus_cm": { "type": "number" }
+      },
+      "required": ["id", "episode_id", "patient_mrn"]
+    },
+    "AbortionPACEpisode": {
+      "title": "AbortionPACEpisode",
+      "description": "A record for a Comprehensive Abortion Care (CAC) or Post-Abortion Care (PAC) episode",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "admission_date": { "type": "string" },
+        "case_type": { "type": "string" },
+        "gestational_age_weeks": { "type": "integer" },
+        "vitals_bp": { "type": "string" },
+        "vitals_temp": { "type": "number" },
+        "hb_level": { "type": "number" },
+        "is_active": { "type": "boolean" },
+        "clinical_summary": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "case_type"]
+    },
+    "PACManagementDetail": {
+      "title": "PACManagementDetail",
+      "description": "Details of the management method used in a PAC/CAC episode",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "management_method": { "type": "string" },
+        "procedure_date": { "type": "string" },
+        "anesthesia_type": { "type": "string" },
+        "cervical_dilation_cm": { "type": "integer" },
+        "procedure_complications": { "type": "string" },
+        "medication_regimen": { "type": "string" },
+        "is_procedure_complete": { "type": "boolean" },
+        "total_blood_loss_ml": { "type": "integer" },
+        "performed_by": { "type": "string" }
+      },
+      "required": ["id", "episode_id", "management_method"]
+    },
+    "PACContraceptiveCounseling": {
+      "title": "PACContraceptiveCounseling",
+      "description": "Contraceptive counseling and follow-up for a PAC/CAC episode",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "counseling_date": { "type": "string" },
+        "counseling_provided": { "type": "boolean" },
+        "contraceptive_method_selected": { "type": "string" },
+        "method_provided_immediately": { "type": "boolean" },
+        "follow_up_appointment_date": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "required": ["id", "episode_id", "counseling_date"]
+    },
+    "FPMethodRegistry": {
+      "title": "FPMethodRegistry",
+      "description": "Master registry for family planning methods",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "method_name": { "type": "string" },
+        "category": { "type": "string" },
+        "standard_duration_months": { "type": "integer" }
+      },
+      "required": ["id", "method_name"]
+    },
+    "FPProvisionRecord": {
+      "title": "FPProvisionRecord",
+      "description": "Record of a family planning method provided to a patient",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "method_id": { "type": "string" },
+        "provision_date": { "type": "string" },
+        "expiry_date": { "type": "string" },
+        "counseling_provided": { "type": "boolean" },
+        "provider_name": { "type": "string" },
+        "clinical_notes": { "type": "string" },
+        "is_active": { "type": "boolean" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn", "method_id", "provision_date"]
+    },
+    "FPRemovalRecord": {
+      "title": "FPRemovalRecord",
+      "description": "Record of a family planning method removal or discontinuation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "provision_id": { "type": "string" },
+        "removal_date": { "type": "string" },
+        "removal_reason": { "type": "string" },
+        "side_effects_noted": { "type": "string" },
+        "provider_name": { "type": "string" },
+        "clinical_notes": { "type": "string" }
+      },
+      "required": ["id", "provision_id", "removal_date"]
+    },
+    "GynEncounter": {
+      "title": "GynEncounter",
+      "description": "General gynecology clinical encounter record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "visit_date": { "type": "string" },
+        "chief_complaint": { "type": "string" },
+        "diagnosis_code": { "type": "string" },
+        "clinical_notes": { "type": "string" },
+        "treatment_plan": { "type": "string" },
+        "prescription_notes": { "type": "string" },
+        "follow_up_required": { "type": "boolean" },
+        "follow_up_date": { "type": "string" },
+        "recorded_by": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "visit_date"]
+    },
+    "GynSurgery": {
+      "title": "GynSurgery",
+      "description": "Gynecological surgical procedure record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "encounter_id": { "type": "string" },
+        "procedure_name": { "type": "string" },
+        "surgery_date": { "type": "string" },
+        "anesthesia_type": { "type": "string" },
+        "surgical_findings": { "type": "string" },
+        "blood_loss_ml": { "type": "integer" },
+        "complications": { "type": "string" },
+        "surgeon_name": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["id", "encounter_id", "procedure_name", "surgery_date"]
+    },
+    "GynInvestigation": {
+      "title": "GynInvestigation",
+      "description": "Gynecological investigation (test/scan) record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "encounter_id": { "type": "string" },
+        "test_type": { "type": "string" },
+        "test_date": { "type": "string" },
+        "result_summary": { "type": "string" },
+        "interpretation": { "type": "string" },
+        "attached_file_path": { "type": "string" }
+      },
+      "required": ["id", "encounter_id", "test_type", "test_date"]
+    },
+    "PediatricGrowthRecord": {
+      "title": "PediatricGrowthRecord",
+      "description": "Pediatric growth and nutritional monitoring record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "visit_date": { "type": "string" },
+        "weight_kg": { "type": "number" },
+        "height_cm": { "type": "number" },
+        "muac_cm": { "type": "number" },
+        "nutritional_status": { "type": "string" },
+        "weight_for_age_zscore": { "type": "number" },
+        "height_for_age_zscore": { "type": "number" },
+        "recorded_by": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn", "visit_date"]
+    },
+    "DevelopmentalScreening": {
+      "title": "DevelopmentalScreening",
+      "description": "Record of pediatric developmental milestones and screenings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "screening_date": { "type": "string" },
+        "age_category": { "type": "string" },
+        "motor_skills_status": { "type": "string" },
+        "speech_language_status": { "type": "string" },
+        "social_emotional_status": { "type": "string" },
+        "concern_flagged": { "type": "boolean" },
+        "clinical_notes": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn", "screening_date"]
+    },
+    "PediatricConsultation": {
+      "title": "PediatricConsultation",
+      "description": "Sick child clinical consultation record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "visit_date": { "type": "string" },
+        "temp_celsius": { "type": "number" },
+        "respiratory_rate": { "type": "integer" },
+        "heart_rate": { "type": "integer" },
+        "oxygen_saturation": { "type": "integer" },
+        "chief_complaint": { "type": "string" },
+        "diagnosis_icd10": { "type": "string" },
+        "treatment_plan": { "type": "string" },
+        "medication_prescribed": { "type": "string" },
+        "is_referral_required": { "type": "boolean" },
+        "recorded_by": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn", "visit_date"]
+    },
+    "PediatricImmunizationBooster": {
+      "title": "PediatricImmunizationBooster",
+      "description": "Record of school-age immunization boosters",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "vaccine_name": { "type": "string" },
+        "date_administered": { "type": "string" },
+        "batch_number": { "type": "string" },
+        "next_due_date": { "type": "string" },
+        "is_completed": { "type": "boolean" }
+      },
+      "required": ["id", "patient_mrn", "vaccine_name", "date_administered"]
+    },
+    "SurgicalMasterRegistry": {
+      "title": "SurgicalMasterRegistry",
+      "description": "Master registry for all surgical procedures",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "surgery_date": { "type": "string" },
+        "specialty": { "type": "string" },
+        "procedure_name": { "type": "string" },
+        "pre_op_diagnosis": { "type": "string" },
+        "post_op_diagnosis": { "type": "string" },
+        "theatre_id": { "type": "string" },
+        "surgeon_name": { "type": "string" },
+        "anesthetist_name": { "type": "string" },
+        "status": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn", "surgery_date", "procedure_name"]
+    },
+    "SurgicalBooking": {
+      "title": "SurgicalBooking",
+      "description": "Record for scheduling a surgical procedure",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "tentative_date": { "type": "string" },
+        "urgency_level": { "type": "string" },
+        "scheduled_procedure": { "type": "string" },
+        "requesting_doctor": { "type": "string" },
+        "status": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn", "tentative_date", "scheduled_procedure"]
+    },
+    "TheatreTimeLog": {
+      "title": "TheatreTimeLog",
+      "description": "Timestamp logs for theatre workflow monitoring",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "registry_id": { "type": "string" },
+        "patient_entry_time": { "type": "string" },
+        "anesthesia_start_time": { "type": "string" },
+        "incision_time": { "type": "string" },
+        "closure_time": { "type": "string" },
+        "patient_exit_time": { "type": "string" },
+        "complications_noted": { "type": "string" }
+      },
+      "required": ["id", "registry_id"]
+    },
+
+    "CashierRadiologyPaymentVerification": {
+      "title": "CashierRadiologyPaymentVerification",
+      "description": "Cashier radiology payment verification record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "invoice_no": { "type": "string" },
+        "payment_verified": { "type": "string" },
+        "payment_method": { "type": "string" },
+        "approved_name": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "invoice_no", "payment_verified", "payment_method", "approved_name", "date"]
+    },
+    "CashierLaboratoryPaymentVerification": {
+      "title": "CashierLaboratoryPaymentVerification",
+      "description": "Cashier laboratory payment verification record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "invoice_no": { "type": "string" },
+        "verified_paid": { "type": "string" },
+        "payment_method": { "type": "string" },
+        "approved_name": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "invoice_no", "verified_paid", "payment_method", "approved_name", "date"]
+    },
+    "ClinicalEncounter": {
+      "title": "ClinicalEncounter",
+      "description": "A record of a patient's clinical encounter with a healthcare provider",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "visit_id": { "type": "string" },
+        "patient_uid": { "type": "string" },
+        "patient_name": { "type": "string" },
+        "encounter_type": { "type": "string" },
+        "clinic": { "type": "string" },
+        "chief_complaint": { "type": "string" },
+        "soap_subjective": { "type": "string" },
+        "soap_objective": { "type": "string" },
+        "soap_assessment": { "type": "string" },
+        "soap_plan": { "type": "string" },
+        "vitals_bp": { "type": "string" },
+        "vitals_pulse": { "type": "number" },
+        "vitals_temp": { "type": "number" },
+        "vitals_spo2": { "type": "number" },
+        "vitals_respiratory_rate": { "type": "number" },
+        "vitals_weight": { "type": "number" },
+        "diagnosis_icd10": { "type": "string" },
+        "diagnosis_text": { "type": "string" },
+        "attending_clinician": { "type": "string" },
+        "encounter_date": { "type": "string" },
+        "status": { "type": "string" },
+        "priority": { "type": "string" }
+      },
+      "required": ["id", "patient_uid", "encounter_type"]
+    },
+    "StaffOnboarding": {
+      "title": "StaffOnboarding",
+      "description": "New hire onboarding checklist and status",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "staffId": { "type": "string" },
+        "steps": { "type": "array" },
+        "status": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "staffId", "steps"]
+    },
+    "HRTemplate": {
+      "title": "HRTemplate",
+      "description": "HR document templates",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "content": { "type": "string" },
+        "tokens": { "type": "array" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name", "content"]
+    },
+    "Staff": {
+      "title": "Staff",
+      "description": "Hospital staff and healthcare provider records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "staff_id": { "type": "string" },
+        "full_name": { "type": "string" },
+        "department": { "type": "string" },
+        "role": { "type": "string" },
+        "credential": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "shift": { "type": "string" },
+        "status": { "type": "string" },
+        "last_check_in": { "type": "string" },
+        "notification_settings": { "type": "object" }
+      },
+      "required": ["id", "full_name", "department", "role"]
+    },
+    "Prescription": {
+      "title": "Prescription",
+      "description": "A medication prescription details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "rx_id": { "type": "string" },
+        "visit_id": { "type": "string" },
+        "patient_uid": { "type": "string" },
+        "patient_name": { "type": "string" },
+        "prescribed_by": { "type": "string" },
+        "prescribed_at": { "type": "string" },
+        "items": { "type": "array" },
+        "diagnosis_text": { "type": "string" },
+        "notes": { "type": "string" },
+        "status": { "type": "string" },
+        "dispensed_by": { "type": "string" },
+        "dispensed_at": { "type": "string" },
+        "payer_method": { "type": "string" }
+      },
+      "required": ["id", "patient_uid", "prescribed_by"]
+    },
+    "Appointment": {
+      "title": "Appointment",
+      "description": "A patient appointment schedule",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "appointment_id": { "type": "string" },
+        "patient_uid": { "type": "string" },
+        "patient_name": { "type": "string" },
+        "visit_id": { "type": "string" },
+        "clinic": { "type": "string" },
+        "appointment_type": { "type": "string" },
+        "scheduled_at": { "type": "string" },
+        "duration_minutes": { "type": "number" },
+        "attending_clinician": { "type": "string" },
+        "reason": { "type": "string" },
+        "notes": { "type": "string" },
+        "status": { "type": "string" },
+        "reminder_sent": { "type": "boolean" }
+      },
+      "required": ["id", "patient_uid", "clinic", "scheduled_at"]
+    },
+    "LabResult": {
+      "title": "LabResult",
+      "description": "Laboratory test results for a patient",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "result_id": { "type": "string" },
+        "diagnostic_id": { "type": "string" },
+        "visit_id": { "type": "string" },
+        "patient_uid": { "type": "string" },
+        "patient_name": { "type": "string" },
+        "test_type": { "type": "string" },
+        "panel": { "type": "string" },
+        "result_entries": { "type": "array" },
+        "summary_text": { "type": "string" },
+        "is_critical": { "type": "boolean" },
+        "critical_flag_reason": { "type": "string" },
+        "resulted_by": { "type": "string" },
+        "resulted_at": { "type": "string" },
+        "verified_by": { "type": "string" },
+        "verified_at": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "patient_uid", "test_type", "panel"]
+    },
+    "NotificationPreference": {
+      "title": "NotificationPreference",
+      "description": "Communication and alert configurations for users",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "role": { "type": "string" },
+        "alert_type": { "type": "string" },
+        "in_app": { "type": "boolean" },
+        "sms": { "type": "boolean" },
+        "email": { "type": "boolean" },
+        "min_severity": { "type": "string" },
+        "enabled": { "type": "boolean" }
+      },
+      "required": ["id", "role", "alert_type"]
+    },
+    "InsuranceClaim": {
+      "title": "InsuranceClaim",
+      "description": "Insurance billing and claim filings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "claim_id": { "type": "string" },
+        "patient_uid": { "type": "string" },
+        "patient_name": { "type": "string" },
+        "visit_id": { "type": "string" },
+        "cbhi_id": { "type": "string" },
+        "insurer": { "type": "string" },
+        "claim_date": { "type": "string" },
+        "services": { "type": "array" },
+        "total_amount": { "type": "number" },
+        "approved_amount": { "type": "number" },
+        "rejection_reason": { "type": "string" },
+        "submitted_at": { "type": "string" },
+        "processed_at": { "type": "string" },
+        "reimbursed_at": { "type": "string" },
+        "submitted_by": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "patient_uid", "insurer", "claim_date"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "In-app notifications and alerts",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" },
+        "severity": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "patient_uid": { "type": "string" },
+        "patient_name": { "type": "string" },
+        "visit_id": { "type": "string" },
+        "journey_stage": { "type": "string" },
+        "ward": { "type": "string" },
+        "triggered_by": { "type": "string" },
+        "channels_sent": { "type": "array" },
+        "target_roles": { "type": "array" },
+        "is_read": { "type": "boolean" },
+        "is_acknowledged": { "type": "boolean" },
+        "acknowledged_by": { "type": "string" },
+        "acknowledged_at": { "type": "string" },
+        "event_time": { "type": "string" }
+      },
+      "required": ["id", "type", "severity", "title", "message"]
+    },
+    "PatientJourneyEvent": {
+      "title": "PatientJourneyEvent",
+      "description": "Milestone events in a patient's care flow",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_uid": { "type": "string" },
+        "patient_name": { "type": "string" },
+        "visit_id": { "type": "string" },
+        "stage": { "type": "string" },
+        "stage_label": { "type": "string" },
+        "location": { "type": "string" },
+        "handled_by": { "type": "string" },
+        "notes": { "type": "string" },
+        "event_time": { "type": "string" },
+        "duration_minutes": { "type": "number" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "patient_uid", "stage"]
+    },
+    "FinancialLedger": {
+      "title": "FinancialLedger",
+      "description": "Ledger of clinic incomes and expenses",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tx_id": { "type": "string" },
+        "patient_uid": { "type": "string" },
+        "patient_name": { "type": "string" },
+        "service_type": { "type": "string" },
+        "description": { "type": "string" },
+        "amount": { "type": "number" },
+        "payer_method": { "type": "string" },
+        "cbhi_claim_status": { "type": "string" },
+        "tx_date": { "type": "string" },
+        "cashier": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "patient_uid", "service_type", "amount"]
+    },
+    "Patient": {
+      "title": "Patient",
+      "description": "A patient record in the EHR",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "uid": { "type": "string" },
+        "mrn": { "type": "string" },
+        "full_name": { "type": "string" },
+        "date_of_birth": { "type": "string" },
+        "gender": { "type": "string" },
+        "phone": { "type": "string" },
+        "region": { "type": "string" },
+        "woreda": { "type": "string" },
+        "kebele": { "type": "string" },
+        "cbhi_id": { "type": "string" },
+        "cbhi_status": { "type": "string" },
+        "blood_group": { "type": "string" },
+        "allergies": { "type": "array" },
+        "chronic_conditions": { "type": "array" },
+        "emergency_contact_name": { "type": "string" },
+        "emergency_contact_phone": { "type": "string" },
+        "registration_date": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "full_name", "mrn"]
+    },
+    "SupplyItem": {
+      "title": "SupplyItem",
+      "description": "Medical and clinical physical supplies and stocks",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "item_code": { "type": "string" },
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "location": { "type": "string" },
+        "batch_no": { "type": "string" },
+        "expiry_date": { "type": "string" },
+        "qty_on_hand": { "type": "number" },
+        "unit": { "type": "string" },
+        "reorder_level": { "type": "number" },
+        "unit_cost": { "type": "number" },
+        "supplier": { "type": "string" },
+        "last_consumption_7d": { "type": "number" },
+        "ward_consumption_daily": { "type": "number" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "name", "category", "location"]
+    },
+    "Diagnostic": {
+      "title": "Diagnostic",
+      "description": "Laboratory and radiology diagnostic records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "test_id": { "type": "string" },
+        "visit_id": { "type": "string" },
+        "patient_uid": { "type": "string" },
+        "patient_name": { "type": "string" },
+        "category": { "type": "string" },
+        "test_type": { "type": "string" },
+        "ordered_by": { "type": "string" },
+        "ordered_at": { "type": "string" },
+        "result": { "type": "string" },
+        "result_value": { "type": "string" },
+        "reference_range": { "type": "string" },
+        "is_critical": { "type": "boolean" },
+        "image_link": { "type": "string" },
+        "status": { "type": "string" },
+        "turnaround_minutes": { "type": "number" }
+      },
+      "required": ["id", "patient_uid", "category", "test_type"]
+    },
+    "PatientClinicalDiagnosisSummary": {
+      "title": "PatientClinicalDiagnosisSummary",
+      "description": "Patient clinical diagnosis summary record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "diagnosis_notes": { "type": "string" },
+        "icd10_code": { "type": "string" },
+        "additional_diagnosis_notes": { "type": "string" },
+        "other_summary": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "diagnosis_notes", "other_summary", "date"]
+    },
+    "PatientMrnRegistration": {
+      "title": "PatientMrnRegistration",
+      "description": "Unique Medical Record Number (MRN) registrations, national identities, fingerprint references, and authority clearance stamps.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "mrn": { "type": "string" },
+        "patient_uid": { "type": "string" },
+        "patient_name": { "type": "string" },
+        "national_id": { "type": "string" },
+        "fingerprint_hash": { "type": "string" },
+        "registered_by": { "type": "string" },
+        "registration_date": { "type": "string" },
+        "status": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "required": ["id", "mrn", "patient_uid", "patient_name", "registered_by"]
+    },
+    "User": {
+      "title": "User",
+      "description": "System user",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string" },
+        "full_name": { "type": "string" },
+        "role": { "type": "string" },
+        "created_date": { "type": "string" },
+        "updated_date": { "type": "string" },
+        "created_by_id": { "type": "string" },
+        "hospital_id": { "type": "string" }
+      },
+      "required": ["id", "email", "full_name", "role"]
+    },
+    "Hospital": {
+      "title": "Hospital",
+      "description": "A healthcare institution tenant in the EHR ecosystem",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_unique_number": { "type": "string" },
+        "name": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["id", "hospital_unique_number", "name"]
+    },
+    "License": {
+      "title": "License",
+      "description": "An institutional software access license key",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "license_key": { "type": "string" },
+        "expiry_date": { "type": "string" },
+        "is_active": { "type": "boolean" }
+      },
+      "required": ["id", "hospital_id", "license_key"]
+    },
+    "PatientIntakeForm": {
+      "title": "PatientIntakeForm",
+      "description": "Dynamic intake form data for a patient",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "formId": { "type": "string" },
+        "data": { "type": "object" },
+        "attachments": { "type": "array" },
+        "status": { "type": "string" },
+        "submittedAt": { "type": "string" }
+      },
+      "required": ["id", "formId", "data", "submittedAt"]
+    },
+    "Bed": {
+      "title": "Bed",
+      "description": "Real-time telemetry and admission records of clinical ward beds and patient assignments.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "bed_number": { "type": "string" },
+        "ward": { "type": "string" },
+        "status": { "type": "string" },
+        "patient_uid": { "type": "string" },
+        "patient_name": { "type": "string" },
+        "admission_date": { "type": "string" },
+        "expected_discharge": { "type": "string" },
+        "attending_physician": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "required": ["id", "bed_number", "ward"]
+    },
+    "PatientInpatientLaboratoryPayment": {
+      "title": "PatientInpatientLaboratoryPayment",
+      "description": "Patient inpatient laboratory payment request record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "lab_bill_amount": { "type": "number" },
+        "payment_method": { "type": "string" },
+        "approved_name": { "type": "string" },
+        "payment_date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "lab_bill_amount", "payment_method", "approved_name", "payment_date"]
+    },
+    "CashierInpatientLaboratoryPaymentVerification": {
+      "title": "CashierInpatientLaboratoryPaymentVerification",
+      "description": "Cashier inpatient laboratory payment verification record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "invoice_no": { "type": "string" },
+        "payment_verified": { "type": "string" },
+        "payment_method": { "type": "string" },
+        "approved_name": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "invoice_no", "payment_verified", "payment_method", "approved_name", "date"]
+    },
+    "PatientInpatientRadiologyPayment": {
+      "title": "PatientInpatientRadiologyPayment",
+      "description": "Patient inpatient radiology payment request record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "radiology_bill_amount": { "type": "number" },
+        "payment_method": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "radiology_bill_amount", "payment_method"]
+    },
+    "CashierInpatientRadiologyPaymentVerification": {
+      "title": "CashierInpatientRadiologyPaymentVerification",
+      "description": "Cashier inpatient radiology payment verification record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "invoice_no": { "type": "string" },
+        "payment_verified": { "type": "string" },
+        "payment_method": { "type": "string" },
+        "approved_name": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "invoice_no", "payment_verified", "payment_method", "approved_name", "date"]
+    },
+    "PatientORProcedurePayment": {
+      "title": "PatientORProcedurePayment",
+      "description": "Patient OR procedure payment request record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "procedure_bill_amount": { "type": "number" },
+        "payment_method": { "type": "string" },
+        "approved_name": { "type": "string" },
+        "payment_date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "procedure_bill_amount", "payment_method", "approved_name", "payment_date"]
+    },
+    "CashierLiaisonInpatientDepositVerification": {
+      "title": "CashierLiaisonInpatientDepositVerification",
+      "description": "Cashier liaison inpatient deposit verification record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "deposit_invoice": { "type": "string" },
+        "deposit_verified": { "type": "string" },
+        "payment_method": { "type": "string" },
+        "approved_name": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "deposit_invoice", "deposit_verified", "payment_method", "approved_name", "date"]
+    },
+    "AdmittedPatientPrescriptionPayment": {
+      "title": "AdmittedPatientPrescriptionPayment",
+      "description": "Admitted patient prescription payment record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "ward_rx_bill": { "type": "number" },
+        "payment_method": { "type": "string" },
+        "approved_name": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "ward_rx_bill", "payment_method", "approved_name", "date"]
+    },
+    "CashierAdmittedPatientPrescriptionVerification": {
+      "title": "CashierAdmittedPatientPrescriptionVerification",
+      "description": "Cashier admitted patient prescription verification record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "rx_invoice": { "type": "string" },
+        "ward_rx_bill": { "type": "number" },
+        "payment_method": { "type": "string" },
+        "approved_name": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "rx_invoice", "ward_rx_bill", "payment_method", "approved_name", "date"]
+    },
+    "CashierLiaisonDischargeDepositVerification": {
+      "title": "CashierLiaisonDischargeDepositVerification",
+      "description": "Cashier liaison discharge inpatient deposit verification record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "discharge_invoice": { "type": "string" },
+        "deposit_verified": { "type": "string" },
+        "amount": { "type": "number" },
+        "payment_method": { "type": "string" },
+        "approved_name": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "discharge_invoice", "deposit_verified", "amount", "payment_method", "approved_name", "date"]
+    },
+    "Patient": {
+      "title": "Patient",
+      "description": "Patient record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "mrn": { "type": "string" },
+        "full_name": { "type": "string" },
+        "dob": { "type": "string" },
+        "gender": { "type": "string" },
+        "phone": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["id", "mrn", "full_name", "dob"]
+    },
+    "Encounter": {
+      "title": "Encounter",
+      "description": "Clinical encounter record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "department": { "type": "string" },
+        "visit_type": { "type": "string" },
+        "status": { "type": "string" },
+        "start_time": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn"]
+    },
+    "Vital": {
+      "title": "Vital",
+      "description": "Patient vital signs record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "encounter_id": { "type": "string" },
+        "systolic_bp": { "type": "integer" },
+        "diastolic_bp": { "type": "integer" },
+        "temperature": { "type": "number" },
+        "weight_kg": { "type": "number" },
+        "recorded_at": { "type": "string" }
+      },
+      "required": ["id", "encounter_id"]
+    },
+    "ServiceCatalog": {
+      "title": "ServiceCatalog",
+      "description": "Financial services catalog",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "service_code": { "type": "string" },
+        "service_name": { "type": "string" },
+        "category": { "type": "string" },
+        "unit_price": { "type": "number" }
+      },
+      "required": ["id", "service_code", "unit_price"]
+    },
+    "Invoice": {
+      "title": "Invoice",
+      "description": "Patient billing invoice",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "encounter_id": { "type": "string" },
+        "total_amount": { "type": "number" },
+        "status": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["id", "encounter_id", "total_amount"]
+    },
+    "Payment": {
+      "title": "Payment",
+      "description": "Payment record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "invoice_id": { "type": "string" },
+        "amount_paid": { "type": "number" },
+        "payment_method": { "type": "string" },
+        "transaction_date": { "type": "string" }
+      },
+      "required": ["id", "invoice_id", "amount_paid"]
+    },
+    "PatientLiaisonInpatientPayment": {
+      "title": "PatientLiaisonInpatientPayment",
+      "description": "Patient liaison inpatient payment request record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "admission_deposit": { "type": "number" },
+        "payment_method": { "type": "string" },
+        "approved_name": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "admission_deposit", "payment_method", "approved_name", "date"]
+    },
+    "CashierORProcedurePaymentVerification": {
+      "title": "CashierORProcedurePaymentVerification",
+      "description": "Cashier OR procedure payment verification record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "invoice_no": { "type": "string" },
+        "payment_verified": { "type": "string" },
+        "payment_method": { "type": "string" },
+        "approved_name": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "invoice_no", "payment_verified", "payment_method", "approved_name", "date"]
+    },
+    "Vitals": {
+      "title": "Vitals",
+      "description": "Patient vital signs record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "heartRate": { "type": "number" },
+        "bloodPressure": { "type": "string" },
+        "temperature": { "type": "number" },
+        "oxygenLevel": { "type": "number" },
+        "recordedAt": { "type": "string" }
+      },
+      "required": ["id", "recordedAt"]
+    },
+    "PatientHistory": {
+      "title": "PatientHistory",
+      "description": "Patient medical history record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "diagnosis": { "type": "string" },
+        "treatment": { "type": "string" },
+        "date": { "type": "string" },
+        "details": { "type": "string" }
+      },
+      "required": ["id", "diagnosis", "date"]
+    },
+    "InvestigationRecord": {
+      "title": "InvestigationRecord",
+      "description": "Lab or medical investigation results",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" },
+        "result": { "type": "string" },
+        "recordedAt": { "type": "string" }
+      },
+      "required": ["id", "type", "recordedAt"]
+    },
+    "PaymentVerificationRecord": {
+      "title": "PaymentVerificationRecord",
+      "description": "Payment verification record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "invoiceNumber": { "type": "string" },
+        "status": { "type": "string" },
+        "verifiedAt": { "type": "string" }
+      },
+      "required": ["id", "invoiceNumber", "status", "verifiedAt"]
+    },
+    "StaffDocument": {
+      "title": "StaffDocument",
+      "description": "Professional practice licenses, certifications, qualifications, and other credentials inside a clinical staff member's personal folder",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "staffId": { "type": "string" },
+        "employeeId": { "type": "string" },
+        "documentType": { "type": "string" },
+        "documentName": { "type": "string" },
+        "documentNumber": { "type": "string" },
+        "issuingBody": { "type": "string" },
+        "issueDate": { "type": "string" },
+        "expiryDate": { "type": "string" },
+        "status": { "type": "string" },
+        "notes": { "type": "string" },
+        "tenantId": { "type": "string" }
+      },
+      "required": ["id", "staffId", "employeeId", "documentType", "documentName", "documentNumber", "issuingBody", "issueDate", "status", "tenantId"]
+    },
+    "UserSetting": {
+      "title": "UserSetting",
+      "description": "User specific application settings like theme, auto-save, etc.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "theme": { "type": "string", "enum": ["light", "dark", "system"] },
+        "autoSave": { "type": "boolean" },
+        "fontSize": { "type": "string", "enum": ["sm", "base", "lg"] },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id"]
+    },
+    "SecurityLog": {
+      "title": "SecurityLog",
+      "description": "Audit trail for sensitive data mutations and security events",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "action": { "type": "string" },
+        "path": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "details": { "type": "string" },
+        "ipAddress": { "type": "string" },
+        "userAgent": { "type": "string" }
+      },
+      "required": ["id", "userId", "action", "timestamp"]
+    },
+    "ICUAdmission": {
+      "title": "ICUAdmission",
+      "description": "ICU admission and severity indexing",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "admission_time": { "type": "string" },
+        "admission_reason": { "type": "string" },
+        "apache_ii_score": { "type": "number" },
+        "sofa_score": { "type": "number" },
+        "is_active": { "type": "boolean" },
+        "bed_number": { "type": "string" },
+        "attending_physician": { "type": "string" },
+        "recorded_by": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn", "admission_time"]
+    },
+    "ICUVitalsHourly": {
+      "title": "ICUVitalsHourly",
+      "description": "Hourly vitals monitoring in ICU",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "admission_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "bp_systolic": { "type": "number" },
+        "bp_diastolic": { "type": "number" },
+        "mean_arterial_pressure": { "type": "number" },
+        "heart_rate": { "type": "number" },
+        "cvp_cmh2o": { "type": "number" },
+        "spo2_percent": { "type": "number" },
+        "respiratory_rate": { "type": "number" },
+        "recorded_by": { "type": "string" }
+      },
+      "required": ["id", "admission_id", "timestamp"]
+    },
+    "ICUVentilatorSetting": {
+      "title": "ICUVentilatorSetting",
+      "description": "ICU ventilator settings and respiratory monitoring",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "admission_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "vent_mode": { "type": "string" },
+        "fio2_percent": { "type": "number" },
+        "peep_cmh2o": { "type": "number" },
+        "tidal_volume_ml": { "type": "number" },
+        "respiratory_rate_set": { "type": "number" },
+        "sedation_score_rass": { "type": "number" },
+        "recorded_by": { "type": "string" }
+      },
+      "required": ["id", "admission_id", "timestamp"]
+    },
+    "ICUDailyAssessment": {
+      "title": "ICUDailyAssessment",
+      "description": "ICU daily systems assessment",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "admission_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "assessment_date": { "type": "string" },
+        "neurological_gcs": { "type": "number" },
+        "cardiovascular_notes": { "type": "string" },
+        "renal_urine_output_24h": { "type": "number" },
+        "nutrition_status": { "type": "string" },
+        "plan_of_day": { "type": "string" },
+        "recorded_by": { "type": "string" }
+      },
+      "required": ["id", "admission_id", "assessment_date"]
+    },
+    "IMEncounter": {
+      "title": "IMEncounter",
+      "description": "Internal Medicine clinical encounter record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "visit_date": { "type": "string" },
+        "subjective_history": { "type": "string" },
+        "objective_exam": { "type": "string" },
+        "assessment_diagnosis": { "type": "string" },
+        "plan_management": { "type": "string" },
+        "bp_systolic": { "type": "integer" },
+        "bp_diastolic": { "type": "integer" },
+        "heart_rate": { "type": "integer" },
+        "temp_celsius": { "type": "number" },
+        "recorded_by": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn", "visit_date"]
+    },
+    "ChronicDiseaseLog": {
+      "title": "ChronicDiseaseLog",
+      "description": "Longitudinal registry for chronic disease management",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "condition_name": { "type": "string" },
+        "diagnosis_date": { "type": "string" },
+        "hba1c_level": { "type": "number" },
+        "glucose_fasting_mgdl": { "type": "integer" },
+        "cholesterol_ldl_mgdl": { "type": "integer" },
+        "current_medication_list": { "type": "string" },
+        "status": { "type": "string" },
+        "next_follow_up_date": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn", "condition_name"]
+    },
+    "Prescription": {
+      "title": "Prescription",
+      "description": "Medication prescription record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "encounter_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "drug_name": { "type": "string" },
+        "dosage": { "type": "string" },
+        "frequency": { "type": "string" },
+        "duration_days": { "type": "integer" },
+        "is_active": { "type": "boolean" },
+        "prescription_date": { "type": "string" }
+      },
+      "required": ["id", "drug_name", "prescription_date"]
+    },
+    "IMLabResult": {
+      "title": "IMLabResult",
+      "description": "Laboratory investigation result linked to an encounter",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "encounter_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "test_name": { "type": "string" },
+        "result_value": { "type": "string" },
+        "unit": { "type": "string" },
+        "reference_range": { "type": "string" },
+        "is_abnormal": { "type": "boolean" },
+        "recorded_at": { "type": "string" }
+      },
+      "required": ["id", "test_name", "result_value"]
+    },
+    "VitalSignsRecord": {
+      "title": "VitalSignsRecord",
+      "description": "Comprehensive vital signs monitoring record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "recorded_at": { "type": "string" },
+        "systolic_bp": { "type": "integer" },
+        "diastolic_bp": { "type": "integer" },
+        "heart_rate": { "type": "integer" },
+        "respiratory_rate": { "type": "integer" },
+        "spo2_percent": { "type": "integer" },
+        "fio2_percent": { "type": "integer" },
+        "temperature_c": { "type": "number" },
+        "pain_score": { "type": "integer" },
+        "consciousness_level": { "type": "string" },
+        "recorded_by": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "required": ["id", "recorded_at"]
+    },
+    "FluidBalanceLog": {
+      "title": "FluidBalanceLog",
+      "description": "Daily fluid intake and output monitoring",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "episode_id": { "type": "string" },
+        "log_date": { "type": "string" },
+        "oral_intake_ml": { "type": "integer" },
+        "iv_intake_ml": { "type": "integer" },
+        "urine_output_ml": { "type": "integer" },
+        "drainage_output_ml": { "type": "integer" },
+        "net_balance_ml": { "type": "integer" },
+        "recorded_by": { "type": "string" }
+      },
+      "required": ["id", "log_date"]
+    },
+    "VitalsDeteriorationAlert": {
+      "title": "VitalsDeteriorationAlert",
+      "description": "Alert for clinical deterioration based on vitals",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "vitals_id": { "type": "string" },
+        "alert_level": { "type": "string" },
+        "action_taken": { "type": "string" },
+        "acknowledged_by": { "type": "string" },
+        "resolved_at": { "type": "string" }
+      },
+      "required": ["id", "vitals_id", "alert_level"]
+    },
+    "OxygenPrescription": {
+      "title": "OxygenPrescription",
+      "description": "Prescription for oxygen therapy",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "encounter_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "prescribed_at": { "type": "string" },
+        "device_type": { "type": "string" },
+        "flow_rate_lpm": { "type": "number" },
+        "target_spo2_min": { "type": "integer" },
+        "target_spo2_max": { "type": "integer" },
+        "titration_instructions": { "type": "string" },
+        "is_active": { "type": "boolean" },
+        "stop_date": { "type": "string" },
+        "prescribing_physician": { "type": "string" },
+        "clinical_rationale": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn", "prescribed_at", "device_type"]
+    },
+    "OxygenTitrationLog": {
+      "title": "OxygenTitrationLog",
+      "description": "Log of oxygen titration and monitoring",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "prescription_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "recorded_at": { "type": "string" },
+        "current_flow_rate": { "type": "number" },
+        "patient_spo2_reading": { "type": "integer" },
+        "respiratory_effort": { "type": "string" },
+        "mental_status": { "type": "string" },
+        "action_taken": { "type": "string" },
+        "recorded_by": { "type": "string" }
+      },
+      "required": ["id", "prescription_id", "recorded_at"]
+    },
+    "HospitalServiceCatalog": {
+      "title": "HospitalServiceCatalog",
+      "description": "Catalog of hospital services and pricing",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "service_name": { "type": "string" },
+        "category": { "type": "string" },
+        "unit_price": { "type": "number" },
+        "billing_unit": { "type": "string" }
+      },
+      "required": ["id", "service_name", "unit_price"]
+    },
+    "PaymentRequest": {
+      "title": "PaymentRequest",
+      "description": "Request for payment for hospital services",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "source_module": { "type": "string" },
+        "source_reference_id": { "type": "string" },
+        "service_id": { "type": "string" },
+        "quantity": { "type": "number" },
+        "total_amount": { "type": "number" },
+        "status": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn", "total_amount", "status"]
+    },
+    "PaymentTransaction": {
+      "title": "PaymentTransaction",
+      "description": "Record of a payment transaction",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "request_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "amount_paid": { "type": "number" },
+        "payment_method": { "type": "string" },
+        "transaction_reference": { "type": "string" },
+        "paid_at": { "type": "string" }
+      },
+      "required": ["id", "request_id", "amount_paid", "paid_at"]
+    },
+    "PaymentVerificationLog": {
+      "title": "PaymentVerificationLog",
+      "description": "Log of payment verifications",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "prescription_id": { "type": "string" },
+        "transaction_id": { "type": "string" },
+        "verification_status": { "type": "string" },
+        "verified_at": { "type": "string" },
+        "verified_by": { "type": "string" },
+        "validation_code": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "required": ["id", "verification_status", "verified_at"]
+    },
+    "DentalEncounter": {
+      "title": "DentalEncounter",
+      "description": "Dental encounter clinical record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "visit_date": { "type": "string" },
+        "chief_complaint": { "type": "string" },
+        "periodontal_status": { "type": "string" },
+        "recorded_by": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn", "visit_date"]
+    },
+    "DentalToothCharting": {
+      "title": "DentalToothCharting",
+      "description": "Detailed tooth-level charting record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "encounter_id": { "type": "string" },
+        "tooth_number": { "type": "integer" },
+        "surface": { "type": "string" },
+        "condition_code": { "type": "string" },
+        "clinical_notes": { "type": "string" }
+      },
+      "required": ["id", "encounter_id", "tooth_number"]
+    },
+    "DentalProcedure": {
+      "title": "DentalProcedure",
+      "description": "Dental clinical procedure records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "encounter_id": { "type": "string" },
+        "procedure_name": { "type": "string" },
+        "tooth_number": { "type": "integer" },
+        "material_used": { "type": "string" },
+        "duration_minutes": { "type": "integer" },
+        "cost_amount": { "type": "number" },
+        "performed_by": { "type": "string" }
+      },
+      "required": ["id", "encounter_id", "procedure_name"]
+    },
+    "DentalTreatmentPlan": {
+      "title": "DentalTreatmentPlan",
+      "description": "Dental care longitudinal treatment plans",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "plan_description": { "type": "string" },
+        "priority": { "type": "string" },
+        "status": { "type": "string" },
+        "planned_start_date": { "type": "string" },
+        "estimated_completion_date": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn", "status"]
+    },
+    "OphthalEncounter": {
+      "title": "OphthalEncounter",
+      "description": "Ophthalmology encounter clinical record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "visit_date": { "type": "string" },
+        "chief_complaint": { "type": "string" },
+        "anterior_segment_findings": { "type": "string" },
+        "posterior_segment_findings": { "type": "string" },
+        "recorded_by": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn", "visit_date"]
+    },
+    "OphthalVital": {
+      "title": "OphthalVital",
+      "description": "Ophthalmology vitals (acuity, IOP, pinhole test)",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "encounter_id": { "type": "string" },
+        "od_acuity": { "type": "string" },
+        "os_acuity": { "type": "string" },
+        "iop_od": { "type": "number" },
+        "iop_os": { "type": "number" },
+        "ph_od": { "type": "string" },
+        "ph_os": { "type": "string" },
+        "clinical_notes": { "type": "string" }
+      },
+      "required": ["id", "encounter_id"]
+    },
+    "OphthalPrescription": {
+      "title": "OphthalPrescription",
+      "description": "Ophthalmology prescription details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "encounter_id": { "type": "string" },
+        "od_sphere": { "type": "number" },
+        "od_cylinder": { "type": "number" },
+        "od_axis": { "type": "integer" },
+        "od_add": { "type": "number" },
+        "os_sphere": { "type": "number" },
+        "os_cylinder": { "type": "number" },
+        "os_axis": { "type": "integer" },
+        "os_add": { "type": "number" },
+        "pupillary_distance": { "type": "integer" },
+        "prescription_notes": { "type": "string" }
+      },
+      "required": ["id", "encounter_id"]
+    },
+    "OphthalProcedure": {
+      "title": "OphthalProcedure",
+      "description": "Ophthalmology surgical/clinical procedures",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "encounter_id": { "type": "string" },
+        "procedure_name": { "type": "string" },
+        "eye_involved": { "type": "string" },
+        "anesthesia_type": { "type": "string" },
+        "surgical_findings": { "type": "string" },
+        "implant_details": { "type": "string" },
+        "performed_by": { "type": "string" }
+      },
+      "required": ["id", "encounter_id", "procedure_name"]
+    },
+    "PhysiatryEncounter": {
+      "title": "PhysiatryEncounter",
+      "description": "Physical Medicine and Rehabilitation clinical encounter record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "visit_date": { "type": "string" },
+        "primary_impairment": { "type": "string" },
+        "functional_goals": { "type": "string" },
+        "pain_level_current": { "type": "integer" },
+        "cognitive_status": { "type": "string" },
+        "mood_status": { "type": "string" },
+        "recorded_by": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn", "visit_date"]
+    },
+    "FunctionalAssessment": {
+      "title": "FunctionalAssessment",
+      "description": "Physiatry functional assessment score details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "encounter_id": { "type": "string" },
+        "assessment_date": { "type": "string" },
+        "assessment_type": { "type": "string" },
+        "total_score": { "type": "integer" },
+        "max_possible_score": { "type": "integer" },
+        "ambulation_status": { "type": "string" },
+        "clinical_notes": { "type": "string" }
+      },
+      "required": ["id", "encounter_id", "assessment_date"]
+    },
+    "RehabTherapyLog": {
+      "title": "RehabTherapyLog",
+      "description": "Rehabilitation therapy session logs",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "encounter_id": { "type": "string" },
+        "session_date": { "type": "string" },
+        "therapy_type": { "type": "string" },
+        "focus_area": { "type": "string" },
+        "session_outcome": { "type": "string" },
+        "therapist_name": { "type": "string" },
+        "clinical_notes": { "type": "string" }
+      },
+      "required": ["id", "encounter_id", "session_date"]
+    },
+    "AssistiveDevice": {
+      "title": "AssistiveDevice",
+      "description": "Assistive devices issued to rehab patients",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "device_name": { "type": "string" },
+        "date_issued": { "type": "string" },
+        "fitting_status": { "type": "string" },
+        "cost_to_patient": { "type": "number" },
+        "is_returned": { "type": "boolean" },
+        "notes": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn", "device_name"]
+    },
+    "ArtEnrollment": {
+      "title": "ArtEnrollment",
+      "description": "HIV/ART treatment enrollment and baseline information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "enrollment_date": { "type": "string" },
+        "hiv_confirmation_date": { "type": "string" },
+        "who_stage": { "type": "integer" },
+        "baseline_cd4_count": { "type": "integer" },
+        "functional_status": { "type": "string" },
+        "enrollment_type": { "type": "string" },
+        "is_active": { "type": "boolean" },
+        "notes": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn", "enrollment_date"]
+    },
+    "ArtRegimenLog": {
+      "title": "ArtRegimenLog",
+      "description": "Antiretroviral treatment regimen logs and adjustments",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "enrollment_id": { "type": "string" },
+        "regimen_name": { "type": "string" },
+        "line_of_treatment": { "type": "integer" },
+        "start_date": { "type": "string" },
+        "end_date": { "type": "string" },
+        "reason_for_switch": { "type": "string" },
+        "prescribed_by": { "type": "string" }
+      },
+      "required": ["id", "enrollment_id", "regimen_name"]
+    },
+    "ArtLabMonitoring": {
+      "title": "ArtLabMonitoring",
+      "description": "Viral load and CD4 lab tracking for ART patients",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "enrollment_id": { "type": "string" },
+        "test_date": { "type": "string" },
+        "test_type": { "type": "string" },
+        "result_value": { "type": "string" },
+        "is_suppressed": { "type": "boolean" },
+        "next_test_due_date": { "type": "string" }
+      },
+      "required": ["id", "enrollment_id", "test_date", "test_type"]
+    },
+    "ArtFollowupVisit": {
+      "title": "ArtFollowupVisit",
+      "description": "ART clinical follow-up and drug adherence checks",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "enrollment_id": { "type": "string" },
+        "appointment_date": { "type": "string" },
+        "attendance_status": { "type": "string" },
+        "adherence_level": { "type": "string" },
+        "medication_refill_days": { "type": "integer" },
+        "provider_name": { "type": "string" }
+      },
+      "required": ["id", "enrollment_id"]
+    },
+    "TBCaseEnrollment": {
+      "title": "TBCaseEnrollment",
+      "description": "Tuberculosis (TB) clinical case enrollment records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "enrollment_date": { "type": "string" },
+        "case_type": { "type": "string" },
+        "disease_site": { "type": "string" },
+        "weight_kg": { "type": "number" },
+        "hiv_status": { "type": "string" },
+        "current_status": { "type": "string" },
+        "is_active": { "type": "boolean" }
+      },
+      "required": ["id", "patient_mrn", "enrollment_date"]
+    },
+    "TBDiagnostic": {
+      "title": "TBDiagnostic",
+      "description": "Tuberculosis (TB) diagnostic sample and results tracking",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "case_id": { "type": "string" },
+        "sample_date": { "type": "string" },
+        "test_type": { "type": "string" },
+        "result_status": { "type": "string" },
+        "lab_notes": { "type": "string" },
+        "verified_by": { "type": "string" }
+      },
+      "required": ["id", "case_id"]
+    },
+    "TBTreatmentLog": {
+      "title": "TBTreatmentLog",
+      "description": "Tuberculosis (TB) treatment progress monitoring and log",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "case_id": { "type": "string" },
+        "visit_date": { "type": "string" },
+        "current_phase": { "type": "string" },
+        "weight_kg": { "type": "number" },
+        "adherence_type": { "type": "string" },
+        "side_effects": { "type": "string" },
+        "next_appointment_date": { "type": "string" }
+      },
+      "required": ["id", "case_id"]
+    },
+    "TBTreatmentOutcome": {
+      "title": "TBTreatmentOutcome",
+      "description": "Tuberculosis (TB) final clinical treatment outcome",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "case_id": { "type": "string" },
+        "outcome_date": { "type": "string" },
+        "outcome_category": { "type": "string" },
+        "final_remarks": { "type": "string" },
+        "recorded_by": { "type": "string" }
+      },
+      "required": ["id", "case_id", "outcome_category"]
+    },
+    "ChronicDiseaseRegistry": {
+      "title": "ChronicDiseaseRegistry",
+      "description": "Registry of patients with chronic clinical conditions in OPD",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "condition_type": { "type": "string" },
+        "diagnosis_date": { "type": "string" },
+        "baseline_severity": { "type": "string" },
+        "current_status": { "type": "string" },
+        "primary_care_provider": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn", "condition_type"]
+    },
+    "ChronicOpdEncounter": {
+      "title": "ChronicOpdEncounter",
+      "description": "OPD clinical encounters for registered chronic disease patients",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "registry_id": { "type": "string" },
+        "visit_date": { "type": "string" },
+        "systolic_bp": { "type": "integer" },
+        "diastolic_bp": { "type": "integer" },
+        "random_blood_sugar": { "type": "number" },
+        "weight_kg": { "type": "number" },
+        "clinical_notes": { "type": "string" },
+        "is_stable": { "type": "boolean" },
+        "next_follow_up_date": { "type": "string" }
+      },
+      "required": ["id", "registry_id", "visit_date"]
+    },
+    "ChronicLabMonitoring": {
+      "title": "ChronicLabMonitoring",
+      "description": "OPD chronic disease lab tracking and target monitoring",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "encounter_id": { "type": "string" },
+        "test_type": { "type": "string" },
+        "result_value": { "type": "number" },
+        "reference_range": { "type": "string" },
+        "is_at_target": { "type": "boolean" },
+        "recorded_at": { "type": "string" }
+      },
+      "required": ["id", "encounter_id", "test_type", "result_value"]
+    },
+    "ChronicMedicationRefill": {
+      "title": "ChronicMedicationRefill",
+      "description": "OPD chronic disease drug prescription and adherence refills",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "registry_id": { "type": "string" },
+        "medication_name": { "type": "string" },
+        "dosage": { "type": "string" },
+        "quantity_dispensed": { "type": "integer" },
+        "adherence_score": { "type": "integer" },
+        "side_effects_reported": { "type": "string" },
+        "refill_date": { "type": "string" }
+      },
+      "required": ["id", "registry_id", "medication_name", "quantity_dispensed"]
+    },
+    "CervicalCancerScreening": {
+      "title": "CervicalCancerScreening",
+      "description": "Cervical cancer prevention, screening, and visual inspection records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "screening_date": { "type": "string" },
+        "screening_method": { "type": "string" },
+        "visual_result": { "type": "string" },
+        "disposition": { "type": "string" },
+        "provider_name": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn", "screening_date"]
+    },
+    "CervicalCancerPathology": {
+      "title": "CervicalCancerPathology",
+      "description": "Cervical cancer cytological and histological pathology details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "screening_id": { "type": "string" },
+        "sample_collection_date": { "type": "string" },
+        "lab_report_date": { "type": "string" },
+        "cytology_result": { "type": "string" },
+        "biopsy_result": { "type": "string" },
+        "lab_reference_number": { "type": "string" }
+      },
+      "required": ["id", "screening_id"]
+    },
+    "CervicalCancerTreatment": {
+      "title": "CervicalCancerTreatment",
+      "description": "Cervical cancer pre-cancerous and cancerous ablation or excision treatments",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "screening_id": { "type": "string" },
+        "procedure_name": { "type": "string" },
+        "procedure_date": { "type": "string" },
+        "complications_noted": { "type": "string" },
+        "post_op_instructions": { "type": "string" },
+        "performed_by": { "type": "string" }
+      },
+      "required": ["id", "screening_id", "procedure_name"]
+    },
+    "CervicalCancerSurveillance": {
+      "title": "CervicalCancerSurveillance",
+      "description": "Longitudinal cervical cancer surveillance registry and next screening alerts",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "last_screening_result": { "type": "string" },
+        "next_due_date": { "type": "string" },
+        "surveillance_status": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn"]
+    },
+    "Form111b": {
+      "title": "Form111b",
+      "description": "1.1.1.b Triage Add Items Form & Vitals Signs Summary",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "triage_opd": { "type": "string" },
+        "vital_bp": { "type": "string" },
+        "vital_pulse": { "type": "number" },
+        "vital_temp": { "type": "number" },
+        "vital_rr": { "type": "number" },
+        "triage_priority": { "type": "string" },
+        "summary": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_mrn", "triage_opd", "summary"]
+    },
+    "Form111k": {
+      "title": "Form111k",
+      "description": "1.1.1.k Emergency Radiology Reports capturing findings, turnaround-times, and critical result communication tracking",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hospital_id": { "type": "string" },
+        "patient_MRN": { "type": "string" },
+        "opd_or_ward_name": { "type": "string" },
+        "modality": { "type": "string" },
+        "study_description": { "type": "string" },
+        "urgency_level": { "type": "string" },
+        "report_status": { "type": "string" },
+        "clinical_indication": { "type": "string" },
+        "findings": { "type": "string" },
+        "impression": { "type": "string" },
+        "critical_finding": { "type": "boolean" },
+        "critical_notified_to": { "type": "string" },
+        "critical_notified_at": { "type": "string" },
+        "ordering_physician_id": { "type": "string" },
+        "radiologist_id": { "type": "string" },
+        "order_time": { "type": "string" },
+        "acquisition_time": { "type": "string" },
+        "preliminary_time": { "type": "string" },
+        "final_time": { "type": "string" },
+        "created_at": { "type": "string" },
+        "updated_at": { "type": "string" }
+      },
+      "required": ["id", "hospital_id", "patient_MRN", "opd_or_ward_name", "modality", "study_description", "urgency_level", "report_status", "findings", "impression", "ordering_physician_id", "radiologist_id", "order_time", "acquisition_time"]
+    },
+    "SurgicalConsentForm": {
+      "title": "SurgicalConsentForm",
+      "description": "Surgical Consent Forms to document and track patient consent for surgical procedures",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "surgery_booking_id": { "type": "string" },
+        "procedure_name": { "type": "string" },
+        "risks_discussed": { "type": "string" },
+        "alternatives_discussed": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn", "procedure_name"]
+    },
+    "SurgicalConsentSignature": {
+      "title": "SurgicalConsentSignature",
+      "description": "Verification of digital signatures and signatory details for surgical consent",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "consent_id": { "type": "string" },
+        "signatory_name": { "type": "string" },
+        "signatory_role": { "type": "string" },
+        "signature_hash": { "type": "string" },
+        "ip_address": { "type": "string" },
+        "signed_at": { "type": "string" }
+      },
+      "required": ["id", "consent_id", "signatory_name", "signature_hash"]
+    },
+    "SurgicalSafetyChecklist": {
+      "title": "SurgicalSafetyChecklist",
+      "description": "Surgical Safety Checklist to confirm teams, timings, and overall completeness",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "consent_id": { "type": "string" },
+        "surgery_start_time": { "type": "string" },
+        "surgery_end_time": { "type": "string" },
+        "lead_surgeon": { "type": "string" },
+        "anesthesiologist": { "type": "string" },
+        "is_completed": { "type": "boolean" }
+      },
+      "required": ["id", "consent_id"]
+    },
+    "ChecklistPhaseSignin": {
+      "title": "ChecklistPhaseSignin",
+      "description": "Phase Sign-In: Confirms patient identity, surgical site marking, consent, and anesthesia safety checks before induction",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "checklist_id": { "type": "string" },
+        "patient_identity_confirmed": { "type": "boolean" },
+        "site_marked": { "type": "boolean" },
+        "consent_obtained": { "type": "boolean" },
+        "anesthesia_safety_check": { "type": "boolean" },
+        "pulse_oximeter_functioning": { "type": "boolean" },
+        "verified_by": { "type": "string" },
+        "verified_at": { "type": "string" }
+      },
+      "required": ["id", "checklist_id", "verified_by"]
+    },
+    "ChecklistPhaseTimeout": {
+      "title": "ChecklistPhaseTimeout",
+      "description": "Phase Time-Out: Confirms team introduction, procedure, site, antibiotic prophylaxis, and essential imaging before incision",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "checklist_id": { "type": "string" },
+        "team_members_introduced": { "type": "boolean" },
+        "patient_site_procedure_confirmed": { "type": "boolean" },
+        "antibiotic_prophylaxis_given": { "type": "boolean" },
+        "essential_imaging_displayed": { "type": "boolean" },
+        "verified_by": { "type": "string" },
+        "verified_at": { "type": "string" }
+      },
+      "required": ["id", "checklist_id", "verified_by"]
+    },
+    "ChecklistPhaseSignout": {
+      "title": "ChecklistPhaseSignout",
+      "description": "Phase Sign-Out: Confirms procedure name, instrument counts, specimen labeling, and equipment checks before leaving OR",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "checklist_id": { "type": "string" },
+        "procedure_name_confirmed": { "type": "boolean" },
+        "instrument_count_correct": { "type": "boolean" },
+        "specimens_labeled": { "type": "boolean" },
+        "equipment_problems_addressed": { "type": "boolean" },
+        "verified_by": { "type": "string" },
+        "verified_at": { "type": "string" }
+      },
+      "required": ["id", "checklist_id", "verified_by"]
+    },
+    "PostOpPacuLog": {
+      "title": "PostOpPacuLog",
+      "description": "Post-operative PACU log tracking immediate stability and hemodynamic status in recovery",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "checklist_id": { "type": "string" },
+        "recorded_at": { "type": "string" },
+        "consciousness_score": { "type": "number" },
+        "pain_level": { "type": "number" },
+        "nausea_vomiting_status": { "type": "string" },
+        "iv_site_status": { "type": "string" },
+        "surgical_site_drainage": { "type": "string" },
+        "nurse_assessment": { "type": "string" }
+      },
+      "required": ["id", "checklist_id", "consciousness_score", "pain_level"]
+    },
+    "PostOpOrders": {
+      "title": "PostOpOrders",
+      "description": "Post-operative clinical care instructions, activity, diet, and monitoring schedules",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "checklist_id": { "type": "string" },
+        "order_date": { "type": "string" },
+        "activity_level": { "type": "string" },
+        "diet_order": { "type": "string" },
+        "dvt_prophylaxis": { "type": "boolean" },
+        "vitals_frequency": { "type": "string" },
+        "dressing_change_frequency": { "type": "string" },
+        "ordered_by": { "type": "string" }
+      },
+      "required": ["id", "checklist_id", "order_date", "ordered_by"]
+    },
+    "PostOpWoundCare": {
+      "title": "PostOpWoundCare",
+      "description": "Post-operative wound evaluation using the REEDA Scale (Redness, Edema, Ecchymosis, Discharge, Approximation)",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "checklist_id": { "type": "string" },
+        "assessment_date": { "type": "string" },
+        "redness": { "type": "boolean" },
+        "edema": { "type": "boolean" },
+        "discharge_present": { "type": "boolean" },
+        "approximation_intact": { "type": "boolean" },
+        "dressing_type": { "type": "string" },
+        "culture_swab_taken": { "type": "boolean" },
+        "recorded_by": { "type": "string" }
+      },
+      "required": ["id", "checklist_id", "assessment_date", "recorded_by"]
+    },
+    "PostOpComplications": {
+      "title": "PostOpComplications",
+      "description": "Logging and tracking of surgical or respiratory complications and interventions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "checklist_id": { "type": "string" },
+        "event_date": { "type": "string" },
+        "complication_type": { "type": "string" },
+        "severity_level": { "type": "string" },
+        "intervention_taken": { "type": "string" },
+        "outcome": { "type": "string" }
+      },
+      "required": ["id", "checklist_id", "event_date", "complication_type", "severity_level", "outcome"]
+    },
+    "DischargeSummary": {
+      "title": "DischargeSummary",
+      "description": "Comprehensive surgical discharge notes, medication reconciliation, and follow-up warnings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "checklist_id": { "type": "string" },
+        "discharge_date": { "type": "string" },
+        "summary_notes": { "type": "string" },
+        "medication_reconciliation": { "type": "string" },
+        "follow_up_instructions": { "type": "string" },
+        "return_to_hospital_signs": { "type": "string" },
+        "discharged_by": { "type": "string" }
+      },
+      "required": ["id", "checklist_id", "discharge_date", "discharged_by"]
+    },
+    "ExecutiveKpiDashboard": {
+      "title": "ExecutiveKpiDashboard",
+      "description": "Daily snapshot of hospital performance metrics",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "snapshot_date": { "type": "string" },
+        "daily_admissions": { "type": "integer" },
+        "daily_discharges": { "type": "integer" },
+        "bed_occupancy_rate": { "type": "number" },
+        "total_revenue_daily": { "type": "number" },
+        "outstanding_receivables": { "type": "number" },
+        "mortality_rate_daily": { "type": "number" },
+        "surgical_complication_rate": { "type": "number" },
+        "average_wait_time_minutes": { "type": "integer" }
+      },
+      "required": ["id"]
+    },
+    "StaffCredentialing": {
+      "title": "StaffCredentialing",
+      "description": "Staff license and privilege tracking",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "staff_id": { "type": "string" },
+        "license_number": { "type": "string" },
+        "license_expiry_date": { "type": "string" },
+        "malpractice_insurance_expiry": { "type": "string" },
+        "privilege_status": { "type": "string" },
+        "last_background_check": { "type": "string" }
+      },
+      "required": ["id", "staff_id"]
+    },
+    "FacilityAsset": {
+      "title": "FacilityAsset",
+      "description": "Equipment asset management",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "asset_name": { "type": "string" },
+        "department_id": { "type": "string" },
+        "purchase_date": { "type": "string" },
+        "last_maintenance_date": { "type": "string" },
+        "next_maintenance_due": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "asset_name"]
+    },
+    "LabTestCatalog": {
+      "title": "LabTestCatalog",
+      "description": "Laboratory test catalog",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "test_code": { "type": "string" },
+        "test_name": { "type": "string" },
+        "category": { "type": "string" },
+        "default_unit": { "type": "string" },
+        "reference_range_low": { "type": "number" },
+        "reference_range_high": { "type": "number" },
+        "unit_price": { "type": "number" }
+      },
+      "required": ["id", "test_code", "test_name", "unit_price"]
+    },
+    "RadiologyCatalog": {
+      "title": "RadiologyCatalog",
+      "description": "Radiology catalog",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "modality_type": { "type": "string" },
+        "study_name": { "type": "string" },
+        "base_price": { "type": "number" },
+        "is_contrast_required": { "type": "boolean" }
+      },
+      "required": ["id", "study_name", "base_price"]
+    },
+    "LabOrder": {
+      "title": "LabOrder",
+      "description": "Laboratory orders",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "requesting_physician": { "type": "string" },
+        "order_priority": { "type": "string" },
+        "status": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn"]
+    },
+    "RadiologyOrder": {
+      "title": "RadiologyOrder",
+      "description": "Radiology orders",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patient_mrn": { "type": "string" },
+        "catalog_id": { "type": "string" },
+        "requesting_physician": { "type": "string" },
+        "clinical_indication": { "type": "string" },
+        "urgency_level": { "type": "string" },
+        "status": { "type": "string" },
+        "created_at": { "type": "string" }
+      },
+      "required": ["id", "patient_mrn"]
+    },
+    "LabSample": {
+      "title": "LabSample",
+      "description": "Laboratory samples",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "order_id": { "type": "string" },
+        "sample_type": { "type": "string" },
+        "barcode_id": { "type": "string" },
+        "collected_at": { "type": "string" },
+        "collected_by": { "type": "string" },
+        "received_in_lab_at": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "order_id"]
+    },
+    "RadiologyReport": {
+      "title": "RadiologyReport",
+      "description": "Radiology reports",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "order_id": { "type": "string" },
+        "radiologist_name": { "type": "string" },
+        "study_date": { "type": "string" },
+        "findings": { "type": "string" },
+        "impression": { "type": "string" },
+        "study_instance_uid": { "type": "string" },
+        "report_status": { "type": "string" },
+        "finalized_at": { "type": "string" }
+      },
+      "required": ["id", "order_id"]
+    },
+    "LabResult": {
+      "title": "LabResult",
+      "description": "Laboratory results",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "sample_id": { "type": "string" },
+        "test_id": { "type": "string" },
+        "result_value": { "type": "string" },
+        "is_abnormal": { "type": "boolean" },
+        "comments": { "type": "string" },
+        "verified_by": { "type": "string" },
+        "reported_at": { "type": "string" }
+      },
+      "required": ["id", "sample_id", "test_id"]
+    }
+  },
+  "firestore": {
+    "beds": {
+      "schema": { "$ref": "Bed" },
+      "description": "Ward beds and occupancy management"
+    },
+    "executive_kpi_dashboard": {
+      "schema": { "$ref": "ExecutiveKpiDashboard" },
+      "description": "Daily snapshot of hospital performance metrics"
+    },
+    "staff_credentialing": {
+      "schema": { "$ref": "StaffCredentialing" },
+      "description": "Staff license and privilege tracking"
+    },
+    "facility_assets": {
+      "schema": { "$ref": "FacilityAsset" },
+      "description": "Equipment asset management"
+    },
+    "lab_test_catalog": {
+      "schema": { "$ref": "LabTestCatalog" },
+      "description": "Laboratory test catalog"
+    },
+    "lab_orders": {
+      "schema": { "$ref": "LabOrder" },
+      "description": "Laboratory orders"
+    },
+    "lab_samples": {
+      "schema": { "$ref": "LabSample" },
+      "description": "Laboratory samples"
+    },
+    "lab_results": {
+      "schema": { "$ref": "LabResult" },
+      "description": "Laboratory results"
+    },
+    "clinical_patients": {
+      "schema": { "$ref": "Patient" },
+      "description": "Clinical patients"
+    },
+    "clinical_encounters": {
+      "schema": { "$ref": "Encounter" },
+      "description": "Clinical encounters"
+    },
+    "clinical_vitals": {
+      "schema": { "$ref": "Vital" },
+      "description": "Clinical vitals"
+    },
+    "financial_services": {
+      "schema": { "$ref": "ServiceCatalog" },
+      "description": "Financial services"
+    },
+    "financial_invoices": {
+      "schema": { "$ref": "Invoice" },
+      "description": "Financial invoices"
+    },
+    "financial_payments": {
+      "schema": { "$ref": "Payment" },
+      "description": "Financial payments"
+    },
+    "clinical_encounters": {
+      "schema": { "$ref": "ClinicalEncounter" },
+      "description": "Clinical encounter records"
+    },
+    "staff_onboarding": {
+      "schema": { "$ref": "StaffOnboarding" },
+      "description": "New hire onboarding checklist"
+    },
+    "hr_templates": {
+      "schema": { "$ref": "HRTemplate" },
+      "description": "HR document templates"
+    },
+    "staff": {
+      "schema": { "$ref": "Staff" },
+      "description": "Hospital staff records"
+    },
+    "prescriptions": {
+      "schema": { "$ref": "Prescription" },
+      "description": "Patient prescriptions"
+    },
+    "appointments": {
+      "schema": { "$ref": "Appointment" },
+      "description": "Patient appointments"
+    },
+    "lab_results": {
+      "schema": { "$ref": "LabResult" },
+      "description": "Patient laboratory reports"
+    },
+    "notification_preferences": {
+      "schema": { "$ref": "NotificationPreference" },
+      "description": "User notification preferences"
+    },
+    "insurance_claims": {
+      "schema": { "$ref": "InsuranceClaim" },
+      "description": "Insurance claims ledgers"
+    },
+    "notifications": {
+      "schema": { "$ref": "Notification" },
+      "description": "System alerts and notifications"
+    },
+    "patient_journey_events": {
+      "schema": { "$ref": "PatientJourneyEvent" },
+      "description": "Patient milestones and tracker events"
+    },
+    "financial_ledger": {
+      "schema": { "$ref": "FinancialLedger" },
+      "description": "Clinic incomes and costs transactions"
+    },
+    "patients": {
+      "schema": { "$ref": "Patient" },
+      "description": "Patient medical records"
+    },
+    "patients/{patientId}/intake_forms": {
+      "schema": { "$ref": "PatientIntakeForm" },
+      "description": "Patient intake forms"
+    },
+    "patients/{patientId}/vitals": {
+      "schema": { "$ref": "Vitals" },
+      "description": "Patient vital signs"
+    },
+    "patients/{patientId}/lab_results": {
+      "schema": { "$ref": "LabResult" },
+      "description": "Patient lab results"
+    },
+    "patients/{patientId}/medical_history": {
+      "schema": { "$ref": "PatientHistory" },
+      "description": "Patient history"
+    },
+    "patients/{patientId}/investigations": {
+      "schema": { "$ref": "InvestigationRecord" },
+      "description": "Patient investigation records"
+    },
+    "patients/{patientId}/payments": {
+      "schema": { "$ref": "PaymentVerificationRecord" },
+      "description": "Patient payment records"
+    },
+    "supply_items": {
+      "schema": { "$ref": "SupplyItem" },
+      "description": "Medical assets and physical supplies"
+    },
+    "diagnostics": {
+      "schema": { "$ref": "Diagnostic" },
+      "description": "Imaging and advanced scanning reports"
+    },
+    "patient_clinical_diagnosis_summaries": {
+      "schema": { "$ref": "PatientClinicalDiagnosisSummary" },
+      "description": "Patient clinical diagnosis summary records"
+    },
+    "patient_mrn_registrations": {
+      "schema": { "$ref": "PatientMrnRegistration" },
+      "description": "Patient Medical Record Number (MRN) registrations"
+    },
+    "users": {
+      "schema": { "$ref": "User" },
+      "description": "Collection of authorized users"
+    },
+    "hospitals": {
+      "schema": { "$ref": "Hospital" },
+      "description": "Healthcare institutions / tenants"
+    },
+    "departments": {
+      "schema": { "$ref": "Department" },
+      "description": "Hospital department configuration"
+    },
+    "pre_triage_records": {
+      "schema": { "$ref": "PreTriageRecord" },
+      "description": "Pre-triage intake screening records"
+    },
+    "patient_payments": {
+      "schema": { "$ref": "PatientPayment" },
+      "description": "Patient registration payment records"
+    },
+    "cashier_payment_verifications": {
+      "schema": { "$ref": "CashierPaymentVerification" },
+      "description": "Cashier payment verification records"
+    },
+    "patient_laboratory_payments": {
+      "schema": { "$ref": "PatientLaboratoryPayment" },
+      "description": "Patient laboratory payment records"
+    },
+    "cashier_laboratory_payment_verifications": {
+      "schema": { "$ref": "CashierLaboratoryPaymentVerification" },
+      "description": "Cashier laboratory payment verification records"
+    },
+    "patient_radiology_payments": {
+      "schema": { "$ref": "PatientRadiologyPayment" },
+      "description": "Patient radiology payment records"
+    },
+    "patient_laboratory_investigation_requests": {
+      "schema": { "$ref": "PatientLaboratoryInvestigationRequest" },
+      "description": "Patient laboratory investigation request records"
+    },
+    "patient_radiology_investigation_requests": {
+      "schema": { "$ref": "PatientRadiologyInvestigationRequest" },
+      "description": "Patient radiology investigation request records"
+    },
+    "antenatal_episodes": {
+      "schema": { "$ref": "AntenatalEpisode" },
+      "description": "Master pregnancy episode records"
+    },
+    "anc_visits": {
+      "schema": { "$ref": "AncVisit" },
+      "description": "Individual ANC visit session records"
+    },
+    "anc_visits_3": {
+      "schema": { "$ref": "AncVisit3" },
+      "description": "Individual ANC visit session records (3-visit protocol)"
+    },
+    "anc_visits_4": {
+      "schema": { "$ref": "AncVisit4" },
+      "description": "Individual ANC visit session records (4-visit protocol)"
+    },
+    "anc_visits_5": {
+      "schema": { "$ref": "AncVisit5" },
+      "description": "Individual ANC visit session records (5-visit protocol)"
+    },
+    "anc_visits_6": {
+      "schema": { "$ref": "AncVisit6" },
+      "description": "Individual ANC visit session records (6-visit protocol)"
+    },
+    "anc_visits_7": {
+      "schema": { "$ref": "AncVisit7" },
+      "description": "Individual ANC visit session records (7-visit protocol)"
+    },
+    "labor_episodes": {
+      "schema": { "$ref": "LaborEpisode" },
+      "description": "Master records for labor and delivery episodes"
+    },
+    "latent_phase_assessments": {
+      "schema": { "$ref": "LatentPhaseAssessment" },
+      "description": "Assessment records during the latent phase of labor"
+    },
+    "active_phase_assessments": {
+      "schema": { "$ref": "ActivePhaseAssessment" },
+      "description": "Assessment records during the active phase of labor"
+    },
+    "second_stage_monitoring": {
+      "schema": { "$ref": "SecondStageMonitoring" },
+      "description": "Monitoring records during the second stage of labor"
+    },
+    "delivery_outcomes": {
+      "schema": { "$ref": "DeliveryOutcome" },
+      "description": "Records of delivery outcomes and neonatal status"
+    },
+    "third_stage_assessments": {
+      "schema": { "$ref": "ThirdStageAssessment" },
+      "description": "Assessment records for the third stage (placental) of labor"
+    },
+    "postpartum_checks": {
+      "schema": { "$ref": "PostpartumCheck" },
+      "description": "Assessment records for postpartum care"
+    },
+    "cesarean_sections": {
+      "schema": { "$ref": "CesareanSection" },
+      "description": "Records of Cesarean Section surgical procedures"
+    },
+    "post_op_recovery_monitoring": {
+      "schema": { "$ref": "PostOpRecoveryMonitoring" },
+      "description": "Monitoring records for post-operative recovery (PACU)"
+    },
+    "post_op_transfer_status": {
+      "schema": { "$ref": "PostOpTransferStatus" },
+      "description": "Records of patient transfer from PACU to the ward"
+    },
+    "birth_summaries": {
+      "schema": { "$ref": "BirthSummary" },
+      "description": "Comprehensive summaries of birth outcomes and maternal status"
+    },
+    "abortion_pac_episodes": {
+      "schema": { "$ref": "AbortionPACEpisode" },
+      "description": "Episodes of Comprehensive Abortion Care (CAC) or Post-Abortion Care (PAC)"
+    },
+    "pac_management_details": {
+      "schema": { "$ref": "PACManagementDetail" },
+      "description": "Clinical management details for CAC/PAC episodes"
+    },
+    "pac_contraceptive_counseling": {
+      "schema": { "$ref": "PACContraceptiveCounseling" },
+      "description": "Contraceptive counseling records for CAC/PAC patients"
+    },
+    "fp_method_registry": {
+      "schema": { "$ref": "FPMethodRegistry" },
+      "description": "Master registry for family planning methods"
+    },
+    "fp_provision_records": {
+      "schema": { "$ref": "FPProvisionRecord" },
+      "description": "Records of family planning methods provided to patients"
+    },
+    "fp_removal_records": {
+      "schema": { "$ref": "FPRemovalRecord" },
+      "description": "Records of family planning method removals or discontinuations"
+    },
+    "gyn_encounters": {
+      "schema": { "$ref": "GynEncounter" },
+      "description": "General gynecology clinical encounters"
+    },
+    "gyn_surgeries": {
+      "schema": { "$ref": "GynSurgery" },
+      "description": "Gynecological surgical procedures"
+    },
+    "gyn_investigations": {
+      "schema": { "$ref": "GynInvestigation" },
+      "description": "Gynecological investigations and diagnostic tests"
+    },
+    "surgical_master_registry": {
+      "schema": { "$ref": "SurgicalMasterRegistry" },
+      "description": "Master records for all surgical procedures"
+    },
+    "surgical_bookings": {
+      "schema": { "$ref": "SurgicalBooking" },
+      "description": "Surgical procedure bookings and scheduling"
+    },
+    "theatre_time_logs": {
+      "schema": { "$ref": "TheatreTimeLog" },
+      "description": "Time tracking logs for theatre operations"
+    },
+    "pediatric_growth_records": {
+      "schema": { "$ref": "PediatricGrowthRecord" },
+      "description": "Pediatric growth and nutritional monitoring records"
+    },
+    "developmental_screenings": {
+      "schema": { "$ref": "DevelopmentalScreening" },
+      "description": "Pediatric developmental milestone assessments"
+    },
+    "pediatric_consultations": {
+      "schema": { "$ref": "PediatricConsultation" },
+      "description": "Clinical consultations for sick children"
+    },
+    "pediatric_immunization_boosters": {
+      "schema": { "$ref": "PediatricImmunizationBooster" },
+      "description": "School-age immunization booster records"
+    },
+    "newborn_registry": {
+      "schema": { "$ref": "NewbornRegistry" },
+      "description": "Registry records for newborn babies"
+    },
+    "neonatal_routine_care": {
+      "schema": { "$ref": "NeonatalRoutineCare" },
+      "description": "Routine care assessment records for neonates"
+    },
+    "nicu_daily_logs": {
+      "schema": { "$ref": "NICUDailyLog" },
+      "description": "Daily clinical logs for NICU patients"
+    },
+    "kmc_sessions": {
+      "schema": { "$ref": "KMCSession" },
+      "description": "Records for Kangaroo Mother Care sessions"
+    },
+    "vaccine_master": {
+      "schema": { "$ref": "VaccineMaster" },
+      "description": "Master registry of available vaccines"
+    },
+    "patient_immunizations": {
+      "schema": { "$ref": "PatientImmunization" },
+      "description": "Patient-specific immunization records"
+    },
+    "aefi_reports": {
+      "schema": { "$ref": "AEFIReport" },
+      "description": "Reports of adverse events following immunization"
+    },
+    "cashier_radiology_payment_verifications": {
+      "schema": { "$ref": "CashierRadiologyPaymentVerification" },
+      "description": "Cashier radiology payment verification records"
+    },
+    "patient_prescription_payments": {
+      "schema": { "$ref": "PatientPrescriptionPayment" },
+      "description": "Patient prescription payment records"
+    },
+    "cashier_prescription_payment_verifications": {
+      "schema": { "$ref": "CashierPrescriptionPaymentVerification" },
+      "description": "Cashier prescription payment verification records"
+    },
+    "patient_procedure_payments": {
+      "schema": { "$ref": "PatientProcedurePayment" },
+      "description": "Patient procedure payment records"
+    },
+    "cashier_procedure_payment_verifications": {
+      "schema": { "$ref": "CashierProcedurePaymentVerification" },
+      "description": "Cashier procedure payment verification records"
+    },
+    "patient_inpatient_laboratory_payments": {
+      "schema": { "$ref": "PatientInpatientLaboratoryPayment" },
+      "description": "Patient inpatient laboratory payment records"
+    },
+    "cashier_inpatient_laboratory_payment_verifications": {
+      "schema": { "$ref": "CashierInpatientLaboratoryPaymentVerification" },
+      "description": "Cashier inpatient laboratory payment verification records"
+    },
+    "patient_inpatient_radiology_payments": {
+      "schema": { "$ref": "PatientInpatientRadiologyPayment" },
+      "description": "Patient inpatient radiology payment records"
+    },
+    "cashier_inpatient_radiology_payment_verifications": {
+      "schema": { "$ref": "CashierInpatientRadiologyPaymentVerification" },
+      "description": "Cashier inpatient radiology payment verification records"
+    },
+    "patient_or_procedure_payments": {
+      "schema": { "$ref": "PatientORProcedurePayment" },
+      "description": "Patient OR procedure payment records"
+    },
+    "cashier_or_procedure_payment_verifications": {
+      "schema": { "$ref": "CashierORProcedurePaymentVerification" },
+      "description": "Cashier OR procedure payment verification records"
+    },
+    "cashier_liaison_inpatient_deposit_verifications": {
+      "schema": { "$ref": "CashierLiaisonInpatientDepositVerification" },
+      "description": "Cashier liaison inpatient deposit verification records"
+    },
+    "admitted_patient_prescription_payments": {
+      "schema": { "$ref": "AdmittedPatientPrescriptionPayment" },
+      "description": "Admitted patient prescription payment records"
+    },
+    "cashier_admitted_patient_prescription_verifications": {
+      "schema": { "$ref": "CashierAdmittedPatientPrescriptionVerification" },
+      "description": "Cashier admitted patient prescription verification records"
+    },
+    "cashier_liaison_discharge_deposit_verifications": {
+      "schema": { "$ref": "CashierLiaisonDischargeDepositVerification" },
+      "description": "Cashier liaison discharge inpatient deposit verification records"
+    },
+    "patient_liaison_discharge_payments": {
+      "schema": { "$ref": "PatientLiaisonDischargePayment" },
+      "description": "Patient liaison discharge inpatient payment records"
+    },
+    "patient_liaison_inpatient_payments": {
+      "schema": { "$ref": "PatientLiaisonInpatientPayment" },
+      "description": "Patient liaison inpatient payment records"
+    },
+    "licenses": {
+      "schema": { "$ref": "License" },
+      "description": "Institutional access licenses"
+    },
+    "hr_staff_documents": {
+      "schema": { "$ref": "StaffDocument" },
+      "description": "Staff personal folders containing professional qualification document subsets"
+    },
+    "hr_activity_logs": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "timestamp": { "type": "string" },
+          "userEmail": { "type": "string" },
+          "action": { "type": "string" },
+          "tableName": { "type": "string" },
+          "recordId": { "type": "string" },
+          "details": { "type": "string" },
+          "tenantId": { "type": "string" }
+        },
+        "required": ["id", "timestamp", "userEmail", "action", "tableName", "recordId", "tenantId"]
+      },
+      "description": "Audit logs for HR table modifications"
+    },
+    "user_settings": {
+      "schema": { "$ref": "UserSetting" },
+      "description": "User specific application settings"
+    },
+    "security_logs": {
+      "schema": { "$ref": "SecurityLog" },
+      "description": "Security audit trail logs"
+    },
+    "icu_admissions": {
+      "schema": { "$ref": "ICUAdmission" },
+      "description": "ICU admission and severity records"
+    },
+    "icu_vitals_hourly": {
+      "schema": { "$ref": "ICUVitalsHourly" },
+      "description": "Hourly vital signs monitoring in ICU"
+    },
+    "icu_ventilator_settings": {
+      "schema": { "$ref": "ICUVentilatorSetting" },
+      "description": "Ventilator settings and respiratory monitoring"
+    },
+    "icu_daily_assessments": {
+      "schema": { "$ref": "ICUDailyAssessment" },
+      "description": "Daily systems assessment for ICU patients"
+    },
+    "im_encounters": {
+      "schema": { "$ref": "IMEncounter" },
+      "description": "Internal Medicine clinical encounters"
+    },
+    "chronic_disease_logs": {
+      "schema": { "$ref": "ChronicDiseaseLog" },
+      "description": "Chronic disease management registries"
+    },
+    "prescriptions": {
+      "schema": { "$ref": "Prescription" },
+      "description": "Medication prescription records"
+    },
+    "im_lab_results": {
+      "schema": { "$ref": "IMLabResult" },
+      "description": "Laboratory investigation results for IM"
+    },
+    "vital_signs_records": {
+      "schema": { "$ref": "VitalSignsRecord" },
+      "description": "Vital signs monitoring records"
+    },
+    "fluid_balance_logs": {
+      "schema": { "$ref": "FluidBalanceLog" },
+      "description": "Fluid intake and output logs"
+    },
+    "vitals_deterioration_alerts": {
+      "schema": { "$ref": "VitalsDeteriorationAlert" },
+      "description": "Clinical deterioration alerts"
+    },
+    "oxygen_prescriptions": {
+      "schema": { "$ref": "OxygenPrescription" },
+      "description": "Oxygen therapy prescriptions"
+    },
+    "oxygen_titration_logs": {
+      "schema": { "$ref": "OxygenTitrationLog" },
+      "description": "Oxygen titration and monitoring logs"
+    },
+    "hospital_service_catalog": {
+      "schema": { "$ref": "HospitalServiceCatalog" },
+      "description": "Hospital service and pricing catalog"
+    },
+    "payment_requests": {
+      "schema": { "$ref": "PaymentRequest" },
+      "description": "Patient payment requests"
+    },
+    "payment_transactions": {
+      "schema": { "$ref": "PaymentTransaction" },
+      "description": "Payment transaction records"
+    },
+    "payment_verification_logs": {
+      "schema": { "$ref": "PaymentVerificationLog" },
+      "description": "Payment verification audit logs"
+    },
+    "dental_encounters": {
+      "schema": { "$ref": "DentalEncounter" },
+      "description": "Dental encounter records"
+    },
+    "dental_tooth_charting": {
+      "schema": { "$ref": "DentalToothCharting" },
+      "description": "Tooth charting records"
+    },
+    "dental_procedures": {
+      "schema": { "$ref": "DentalProcedure" },
+      "description": "Dental procedure records"
+    },
+    "dental_treatment_plans": {
+      "schema": { "$ref": "DentalTreatmentPlan" },
+      "description": "Dental treatment plans"
+    },
+    "ophthal_encounters": {
+      "schema": { "$ref": "OphthalEncounter" },
+      "description": "Ophthalmology encounter clinical records"
+    },
+    "ophthal_vitals": {
+      "schema": { "$ref": "OphthalVital" },
+      "description": "Ophthalmology vitals and visual acuity"
+    },
+    "ophthal_prescriptions": {
+      "schema": { "$ref": "OphthalPrescription" },
+      "description": "Ophthalmology lens/eyeglass prescriptions"
+    },
+    "ophthal_procedures": {
+      "schema": { "$ref": "OphthalProcedure" },
+      "description": "Ophthalmology surgical and clinical procedures"
+    },
+    "physiatry_encounters": {
+      "schema": { "$ref": "PhysiatryEncounter" },
+      "description": "Physiatry and Rehabilitation encounters"
+    },
+    "functional_assessments": {
+      "schema": { "$ref": "FunctionalAssessment" },
+      "description": "Functional assessment scales and scorecards"
+    },
+    "rehab_therapy_logs": {
+      "schema": { "$ref": "RehabTherapyLog" },
+      "description": "Physical, Occupational, and Speech therapy logs"
+    },
+    "assistive_devices": {
+      "schema": { "$ref": "AssistiveDevice" },
+      "description": "Assistive mobility and orthopedic devices issued"
+    },
+    "art_enrollment": {
+      "schema": { "$ref": "ArtEnrollment" },
+      "description": "HIV/ART clinical treatment enrollments"
+    },
+    "art_regimen_logs": {
+      "schema": { "$ref": "ArtRegimenLog" },
+      "description": "HIV/ART regimen adjustments and medication history"
+    },
+    "art_lab_monitoring": {
+      "schema": { "$ref": "ArtLabMonitoring" },
+      "description": "HIV/ART viral load and CD4 lab monitorings"
+    },
+    "art_followup_visits": {
+      "schema": { "$ref": "ArtFollowupVisit" },
+      "description": "HIV/ART clinical checkups and adherence monitorings"
+    },
+    "tb_case_enrollments": {
+      "schema": { "$ref": "TBCaseEnrollment" },
+      "description": "Tuberculosis (TB) treatment enrollments"
+    },
+    "tb_diagnostics": {
+      "schema": { "$ref": "TBDiagnostic" },
+      "description": "Tuberculosis (TB) test diagnostics and results"
+    },
+    "tb_treatment_logs": {
+      "schema": { "$ref": "TBTreatmentLog" },
+      "description": "Tuberculosis (TB) patient treatment history and logs"
+    },
+    "tb_treatment_outcomes": {
+      "schema": { "$ref": "TBTreatmentOutcome" },
+      "description": "Tuberculosis (TB) final treatment outcomes"
+    },
+    "chronic_disease_registry": {
+      "schema": { "$ref": "ChronicDiseaseRegistry" },
+      "description": "Registry of patients with chronic clinical conditions in OPD"
+    },
+    "chronic_opd_encounters": {
+      "schema": { "$ref": "ChronicOpdEncounter" },
+      "description": "OPD clinical encounters for registered chronic disease patients"
+    },
+    "chronic_lab_monitoring": {
+      "schema": { "$ref": "ChronicLabMonitoring" },
+      "description": "OPD chronic disease lab tracking and target monitoring"
+    },
+    "chronic_medication_refills": {
+      "schema": { "$ref": "ChronicMedicationRefill" },
+      "description": "OPD chronic disease drug prescription and adherence refills"
+    },
+    "cervical_cancer_screenings": {
+      "schema": { "$ref": "CervicalCancerScreening" },
+      "description": "Cervical cancer screenings and visual inspection records"
+    },
+    "cervical_cancer_pathology": {
+      "schema": { "$ref": "CervicalCancerPathology" },
+      "description": "Cervical cancer pathology and laboratory details"
+    },
+    "cervical_cancer_treatments": {
+      "schema": { "$ref": "CervicalCancerTreatment" },
+      "description": "Cervical cancer precancerous and clinical treatments"
+    },
+    "cervical_cancer_surveillance": {
+      "schema": { "$ref": "CervicalCancerSurveillance" },
+      "description": "Longitudinal cervical cancer surveillance registry"
+    },
+    "surgical_consent_forms": {
+      "schema": { "$ref": "SurgicalConsentForm" },
+      "description": "Surgical consent forms and consent statuses"
+    },
+    "surgical_consent_signatures": {
+      "schema": { "$ref": "SurgicalConsentSignature" },
+      "description": "Verification of signatures for surgical consent"
+    },
+    "surgical_safety_checklist": {
+      "schema": { "$ref": "SurgicalSafetyChecklist" },
+      "description": "Surgical safety checklists monitoring completeness"
+    },
+    "checklist_phase_signin": {
+      "schema": { "$ref": "ChecklistPhaseSignin" },
+      "description": "Checklist sign-in phase verification entries"
+    },
+    "checklist_phase_timeout": {
+      "schema": { "$ref": "ChecklistPhaseTimeout" },
+      "description": "Checklist time-out phase verification entries"
+    },
+    "checklist_phase_signout": {
+      "schema": { "$ref": "ChecklistPhaseSignout" },
+      "description": "Checklist sign-out phase verification entries"
+    },
+    "post_op_pacu_log": {
+      "schema": { "$ref": "PostOpPacuLog" },
+      "description": "Post-operative PACU log tracking and hemodynamic assessments"
+    },
+    "post_op_orders": {
+      "schema": { "$ref": "PostOpOrders" },
+      "description": "Post-operative care orders, medications, and monitoring schedules"
+    },
+    "post_op_wound_care": {
+      "schema": { "$ref": "PostOpWoundCare" },
+      "description": "Post-operative REEDA wound evaluation logs"
+    },
+    "post_op_complications": {
+      "schema": { "$ref": "PostOpComplications" },
+      "description": "Post-operative complications and interventions tracker"
+    },
+    "discharge_summaries": {
+      "schema": { "$ref": "DischargeSummary" },
+      "description": "Post-operative patient discharge summaries and medication reconciliations"
+    },
+    "form_1_1_1_b": {
+      "schema": { "$ref": "Form111b" },
+      "description": "1.1.1.b Triage Add Items Form & Vitals Signs Summary"
+    },
+    "form_1_1_1_k": {
+      "schema": { "$ref": "Form111k" },
+      "description": "1.1.1.k Emergency Radiology Reports capturing findings, turnaround-times, and critical result communication tracking"
+    }
+  }
+}

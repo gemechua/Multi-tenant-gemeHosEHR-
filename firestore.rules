@@ -1,0 +1,442 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() { return request.auth != null; }
+    function getUserData() { return isSignedIn() ? get(/databases/$(database)/documents/users/$(request.auth.uid)).data : null; }
+    function hasRole(role) { return isSignedIn() && getUserData() != null && getUserData().role == role; }
+
+    match /beds/{id} {
+      allow read, write: if true;
+    }
+    // ADMIN
+    match /executive_kpi_dashboard/{id} {
+      allow read, write: if true;
+    }
+    match /staff_credentialing/{id} {
+      allow read, write: if true;
+    }
+    match /facility_assets/{id} {
+      allow read, write: if true;
+    }
+    match /lab_test_catalog/{id} {
+      allow read, write: if true;
+    }
+    match /lab_orders/{id} {
+      allow read, write: if true;
+    }
+    match /lab_samples/{id} {
+      allow read, write: if true;
+    }
+    match /lab_results/{id} {
+      allow read, write: if true;
+    }
+    match /radiology_catalog/{id} {
+      allow read, write: if true;
+    }
+    match /radiology_orders/{id} {
+      allow read, write: if true;
+    }
+    match /radiology_reports/{id} {
+      allow read, write: if true;
+    }
+    match /clinical_patients/{id} {
+      allow read, write: if true;
+    }
+    match /clinical_encounters/{id} {
+      allow read, write: if true;
+    }
+    match /clinical_vitals/{id} {
+      allow read, write: if true;
+    }
+    match /financial_services/{id} {
+      allow read, write: if true;
+    }
+    match /financial_invoices/{id} {
+      allow read, write: if true;
+    }
+    match /financial_payments/{id} {
+      allow read, write: if true;
+    }
+    match /fin_patient_ledger/{id} {
+      allow read: if true;
+      allow write: if true;
+    }
+    match /audit_log/{id} {
+      allow read: if true;
+      allow write: if true; // Audit logs should only be created by system triggers
+    }
+    match /hospitals/{id} {
+      allow read, write: if true;
+    }
+    match /departments/{id} {
+      allow read, write: if true;
+    }
+    match /pre_triage_records/{id} {
+      allow read, write: if true;
+    }
+    match /patient_payments/{id} {
+      allow read, write: if true;
+    }
+    match /cashier_payment_verifications/{id} {
+      allow read, write: if true;
+    }
+    match /patient_laboratory_payments/{id} {
+      allow read, write: if true;
+    }
+    match /cashier_laboratory_payment_verifications/{id} {
+      allow read, write: if true;
+    }
+    match /patient_radiology_payments/{id} {
+      allow read, write: if true;
+    }
+    match /patient_laboratory_investigation_requests/{id} {
+      allow read, write: if true;
+    }
+    match /patient_radiology_investigation_requests/{id} {
+      allow read, write: if true;
+    }
+    match /antenatal_episodes/{id} {
+      allow read, write: if true;
+    }
+    match /anc_visits/{id} {
+      allow read, write: if true;
+    }
+    match /anc_visits_3/{id} {
+      allow read, write: if true;
+    }
+    match /anc_visits_4/{id} {
+      allow read, write: if true;
+    }
+    match /anc_visits_5/{id} {
+      allow read, write: if true;
+    }
+    match /anc_visits_6/{id} {
+      allow read, write: if true;
+    }
+    match /anc_visits_7/{id} {
+      allow read, write: if true;
+    }
+    match /labor_episodes/{id} {
+      allow read, write: if true;
+    }
+    match /latent_phase_assessments/{id} {
+      allow read, write: if true;
+    }
+    match /active_phase_assessments/{id} {
+      allow read, write: if true;
+    }
+    match /second_stage_monitoring/{id} {
+      allow read, write: if true;
+    }
+    match /delivery_outcomes/{id} {
+      allow read, write: if true;
+    }
+    match /third_stage_assessments/{id} {
+      allow read, write: if true;
+    }
+    match /postpartum_checks/{id} {
+      allow read, write: if true;
+    }
+    match /cesarean_sections/{id} {
+      allow read, write: if true;
+    }
+    match /post_op_recovery_monitoring/{id} {
+      allow read, write: if true;
+    }
+    match /post_op_transfer_status/{id} {
+      allow read, write: if true;
+    }
+    match /birth_summaries/{id} {
+      allow read, write: if true;
+    }
+    match /abortion_pac_episodes/{id} {
+      allow read, write: if true;
+    }
+    match /pac_management_details/{id} {
+      allow read, write: if true;
+    }
+    match /pac_contraceptive_counseling/{id} {
+      allow read, write: if true;
+    }
+    match /fp_method_registry/{id} {
+      allow read, write: if true;
+    }
+    match /fp_provision_records/{id} {
+      allow read, write: if true;
+    }
+    match /fp_removal_records/{id} {
+      allow read, write: if true;
+    }
+    match /gyn_encounters/{id} {
+      allow read, write: if true;
+    }
+    match /gyn_surgeries/{id} {
+      allow read, write: if true;
+    }
+    match /gyn_investigations/{id} {
+      allow read, write: if true;
+    }
+    match /surgical_master_registry/{id} {
+      allow read, write: if true;
+    }
+    match /surgical_bookings/{id} {
+      allow read, write: if true;
+    }
+    match /theatre_time_logs/{id} {
+      allow read, write: if true;
+    }
+    match /pediatric_growth_records/{id} {
+      allow read, write: if true;
+    }
+    match /developmental_screenings/{id} {
+      allow read, write: if true;
+    }
+    match /pediatric_consultations/{id} {
+      allow read, write: if true;
+    }
+    match /pediatric_immunization_boosters/{id} {
+      allow read, write: if true;
+    }
+    match /icu_admissions/{id} {
+      allow read, write: if true;
+    }
+    match /icu_vitals_hourly/{id} {
+      allow read, write: if true;
+    }
+    match /icu_ventilator_settings/{id} {
+      allow read, write: if true;
+    }
+    match /icu_daily_assessments/{id} {
+      allow read, write: if true;
+    }
+    match /im_encounters/{id} {
+      allow read, write: if true;
+    }
+    match /chronic_disease_logs/{id} {
+      allow read, write: if true;
+    }
+    match /prescriptions/{id} {
+      allow read, write: if true;
+    }
+    match /im_lab_results/{id} {
+      allow read, write: if true;
+    }
+    match /vital_signs_records/{id} {
+      allow read, write: if true;
+    }
+    match /fluid_balance_logs/{id} {
+      allow read, write: if true;
+    }
+    match /vitals_deterioration_alerts/{id} {
+      allow read, write: if true;
+    }
+    match /oxygen_prescriptions/{id} {
+      allow read, write: if true;
+    }
+    match /oxygen_titration_logs/{id} {
+      allow read, write: if true;
+    }
+    match /hospital_service_catalog/{id} {
+      allow read, write: if true;
+    }
+    match /payment_requests/{id} {
+      allow read, write: if true;
+    }
+    match /payment_transactions/{id} {
+      allow read, write: if true;
+    }
+    match /payment_verification_logs/{id} {
+      allow read, write: if true;
+    }
+    match /dental_encounters/{id} {
+      allow read, write: if true;
+    }
+    match /dental_tooth_charting/{id} {
+      allow read, write: if true;
+    }
+    match /dental_procedures/{id} {
+      allow read, write: if true;
+    }
+    match /dental_treatment_plans/{id} {
+      allow read, write: if true;
+    }
+    match /physiatry_encounters/{id} {
+      allow read, write: if true;
+    }
+    match /functional_assessments/{id} {
+      allow read, write: if true;
+    }
+    match /rehab_therapy_logs/{id} {
+      allow read, write: if true;
+    }
+    match /assistive_devices/{id} {
+      allow read, write: if true;
+    }
+    match /art_enrollment/{id} {
+      allow read, write: if true;
+    }
+    match /art_regimen_logs/{id} {
+      allow read, write: if true;
+    }
+    match /art_lab_monitoring/{id} {
+      allow read, write: if true;
+    }
+    match /art_followup_visits/{id} {
+      allow read, write: if true;
+    }
+    match /tb_case_enrollments/{id} {
+      allow read, write: if true;
+    }
+    match /tb_diagnostics/{id} {
+      allow read, write: if true;
+    }
+    match /tb_treatment_logs/{id} {
+      allow read, write: if true;
+    }
+    match /tb_treatment_outcomes/{id} {
+      allow read, write: if true;
+    }
+    match /chronic_disease_registry/{id} {
+      allow read, write: if true;
+    }
+    match /chronic_opd_encounters/{id} {
+      allow read, write: if true;
+    }
+    match /chronic_lab_monitoring/{id} {
+      allow read, write: if true;
+    }
+    match /chronic_medication_refills/{id} {
+      allow read, write: if true;
+    }
+    match /cervical_cancer_screenings/{id} {
+      allow read, write: if true;
+    }
+    match /cervical_cancer_pathology/{id} {
+      allow read, write: if true;
+    }
+    match /cervical_cancer_treatments/{id} {
+      allow read, write: if true;
+    }
+    match /cervical_cancer_surveillance/{id} {
+      allow read, write: if true;
+    }
+    match /newborn_registry/{id} {
+      allow read, write: if true;
+    }
+    match /neonatal_routine_care/{id} {
+      allow read, write: if true;
+    }
+    match /nicu_daily_logs/{id} {
+      allow read, write: if true;
+    }
+    match /kmc_sessions/{id} {
+      allow read, write: if true;
+    }
+    match /vaccine_master/{id} {
+      allow read, write: if true;
+    }
+    match /patient_immunizations/{id} {
+      allow read, write: if true;
+    }
+    match /aefi_reports/{id} {
+      allow read, write: if true;
+    }
+    match /cashier_radiology_payment_verifications/{id} {
+      allow read, write: if true;
+    }
+    match /patient_prescription_payments/{id} {
+      allow read, write: if true;
+    }
+    match /cashier_prescription_payment_verifications/{id} {
+      allow read, write: if true;
+    }
+    match /patient_procedure_payments/{id} {
+      allow read, write: if true;
+    }
+    match /cashier_procedure_payment_verifications/{id} {
+      allow read, write: if true;
+    }
+    match /patient_inpatient_laboratory_payments/{id} {
+      allow read, write: if true;
+    }
+    match /cashier_inpatient_laboratory_payment_verifications/{id} {
+      allow read, write: if true;
+    }
+    match /patient_inpatient_radiology_payments/{id} {
+      allow read, write: if true;
+    }
+    match /cashier_inpatient_radiology_payment_verifications/{id} {
+      allow read, write: if true;
+    }
+    match /patient_or_procedure_payments/{id} {
+      allow read, write: if true;
+    }
+    match /cashier_or_procedure_payment_verifications/{id} {
+      allow read, write: if true;
+    }
+    match /cashier_liaison_inpatient_deposit_verifications/{id} {
+      allow read, write: if true;
+    }
+    match /admitted_patient_prescription_payments/{id} {
+      allow read, write: if true;
+    }
+    match /cashier_admitted_patient_prescription_verifications/{id} {
+      allow read, write: if true;
+    }
+    match /cashier_liaison_discharge_deposit_verifications/{id} {
+      allow read, write: if true;
+    }
+    match /patient_liaison_inpatient_payments/{id} {
+      allow read, write: if true;
+    }
+    match /patient_liaison_discharge_payments/{id} {
+      allow read, write: if true;
+    }
+    match /licenses/{id} {
+      allow read, write: if true;
+    }
+    match /surgical_consent_forms/{id} {
+      allow read, write: if true;
+    }
+    match /surgical_consent_signatures/{id} {
+      allow read, write: if true;
+    }
+    match /surgical_safety_checklist/{id} {
+      allow read, write: if true;
+    }
+    match /checklist_phase_signin/{id} {
+      allow read, write: if true;
+    }
+    match /checklist_phase_timeout/{id} {
+      allow read, write: if true;
+    }
+    match /checklist_phase_signout/{id} {
+      allow read, write: if true;
+    }
+    match /post_op_pacu_log/{id} {
+      allow read, write: if true;
+    }
+    match /post_op_orders/{id} {
+      allow read, write: if true;
+    }
+    match /post_op_wound_care/{id} {
+      allow read, write: if true;
+    }
+    match /post_op_complications/{id} {
+      allow read, write: if true;
+    }
+    match /discharge_summaries/{id} {
+      allow read, write: if true;
+    }
+    match /form_1_1_1_b/{id} {
+      allow read, write: if true;
+    }
+    match /form_1_1_1_k/{id} {
+      allow read, write: if true;
+    }
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
